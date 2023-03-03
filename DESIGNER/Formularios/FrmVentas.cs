@@ -16,5 +16,7 @@ namespace DESIGNER.Formularios
         {
             InitializeComponent();
         }
+
+     
     }
 }

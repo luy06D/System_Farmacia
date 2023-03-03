@@ -49,6 +49,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -58,20 +59,20 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(28, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Buscar producto";
+            this.label1.Text = "Buscar producto:";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(119, 19);
+            this.textBox1.Location = new System.Drawing.Point(122, 20);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(345, 17);
+            this.button1.Location = new System.Drawing.Point(303, 18);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -107,80 +108,80 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(198, 264);
+            this.label4.Location = new System.Drawing.Point(27, 291);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(129, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "label4";
+            this.label4.Text = "Ingrese el id del producto:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(207, 333);
+            this.label5.Location = new System.Drawing.Point(186, 356);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(29, 13);
             this.label5.TabIndex = 7;
-            this.label5.Text = "label5";
+            this.label5.Text = "DNI:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(27, 333);
+            this.label6.Location = new System.Drawing.Point(29, 356);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 8;
-            this.label6.Text = "label6";
+            this.label6.Text = "Cantidad";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(201, 355);
+            this.textBox2.Location = new System.Drawing.Point(189, 378);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 9;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(30, 355);
+            this.textBox3.Location = new System.Drawing.Point(30, 378);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 10;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(201, 280);
+            this.textBox4.Location = new System.Drawing.Point(189, 310);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 11;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(30, 292);
+            this.textBox5.Location = new System.Drawing.Point(30, 310);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 12;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(30, 397);
+            this.button2.Location = new System.Drawing.Point(32, 434);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(84, 42);
             this.button2.TabIndex = 13;
-            this.button2.Text = "button2";
+            this.button2.Text = "Agregar";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(210, 397);
+            this.button3.Location = new System.Drawing.Point(161, 434);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(128, 42);
             this.button3.TabIndex = 14;
-            this.button3.Text = "button3";
+            this.button3.Text = "Reiniciar Lista";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(465, 233);
+            this.dataGridView2.Location = new System.Drawing.Point(489, 251);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(297, 150);
             this.dataGridView2.TabIndex = 15;
@@ -188,51 +189,62 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(588, 209);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(495, 224);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.Size = new System.Drawing.Size(248, 24);
             this.label7.TabIndex = 16;
-            this.label7.Text = "label7";
+            this.label7.Text = "Productos Seleccionados";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(538, 453);
+            this.button4.Location = new System.Drawing.Point(545, 468);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(77, 30);
             this.button4.TabIndex = 17;
-            this.button4.Text = "button4";
+            this.button4.Text = "Cancelar";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(687, 453);
+            this.button5.Location = new System.Drawing.Point(668, 461);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.Size = new System.Drawing.Size(118, 37);
             this.button5.TabIndex = 18;
-            this.button5.Text = "button5";
+            this.button5.Text = "Finalizar Compra";
             this.button5.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(624, 397);
+            this.label8.Location = new System.Drawing.Point(613, 410);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.Size = new System.Drawing.Size(67, 13);
             this.label8.TabIndex = 19;
-            this.label8.Text = "label8";
+            this.label8.Text = "Precio Total:";
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(662, 394);
+            this.textBox6.Location = new System.Drawing.Point(686, 407);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 20;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(186, 291);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Cliente";
             // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(909, 524);
+            this.ClientSize = new System.Drawing.Size(826, 524);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button5);
@@ -286,5 +298,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BOL
 {
-    internal class ventas
+    internal class Ventas
     {
     }
 }
