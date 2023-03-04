@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace DESIGNER.Formularios
 {
-    public partial class FrmVentas : Form
+    public partial class FrmLogin : Form
     {
-        public FrmVentas()
+        public FrmLogin()
         {
             InitializeComponent();
         }
-
-     
     }
 }

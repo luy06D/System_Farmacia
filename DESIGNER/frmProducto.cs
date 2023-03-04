@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DESIGNER.Formularios
+namespace DESIGNER
 {
-    public partial class FrmVentas : Form
+    public partial class frmProducto : Form
     {
-        public FrmVentas()
+        public frmProducto()
         {
             InitializeComponent();
         }
 
-     
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
