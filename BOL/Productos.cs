@@ -10,6 +10,11 @@ using DAL;
 
 namespace BOL
 {
+<<<<<<< HEAD
+    public  class Productos
+    {
+
+=======
     public class Productos
     {
 
@@ -39,5 +44,6 @@ namespace BOL
             acceso.desconectar();
         }
         
+>>>>>>> 25f5dd3011dacacaa5c6fa71c426489be9d0ca4e
     }
 }
