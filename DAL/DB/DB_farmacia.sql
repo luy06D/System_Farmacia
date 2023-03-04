@@ -1,4 +1,4 @@
-ï»¿
+
 CREATE DATABASE FARMACHINCHA
 GO
 
@@ -24,10 +24,10 @@ GO
 
 INSERT INTO personas (nombres, apellidos, dni, telefono) VALUES
 		('Luis David','Cusi Gonzales','73196921','934651825'),
-		('JesÃºs','Camacho Carrasco','74254765','935446756'),
+		('Jesús','Camacho Carrasco','74254765','935446756'),
 		('Rodrigo Fabrizio','Barrios Saavedra','72234657','965722315'),
-		('Alejandro JesÃºs','Gallardo YaÃ±ez','76534565','956766435'),
-		('Alex EdÃº','Quiroz Ccaulla','75673655','933098675')
+		('Alejandro Jesús','Gallardo Yañez','76534565','956766435'),
+		('Alex Edú','Quiroz Ccaulla','75673655','933098675')
 		
 GO
 
@@ -47,6 +47,7 @@ CREATE TABLE usuarios
 	CONSTRAINT	uk_nom_usu UNIQUE(nomusuarios)
 )
 GO
+
 
 INSERT INTO usuarios ( idpersona ,nomusuarios, claveacceso) VALUES
 	(1,'Luy06','12345'),
@@ -89,9 +90,9 @@ GO
 INSERT INTO categorias( nombrecategoria, numestanteria) VALUES
 	('Medicamentos Orales', 1),
 	('Medicamentos Inyectables',2 ),
-	('Soluciones de perfusiÃ³n',3 ),
+	('Soluciones de perfusión',3 ),
 	('Vacunas, inmunoglobulinas y sueros', 4 ),
-	('Medicamentos de uso externo y antisÃ©pticos', 5),
+	('Medicamentos de uso externo y antisépticos', 5),
 	('Desinfectantes', 6)
 GO
 
@@ -142,15 +143,15 @@ INSERT INTO productos (idlaboratorio, idcategoria, nombreproducto, descripcion, 
 						precio, fechaproduccion, fechavencimiento, numlote, recetamedica) VALUES
 	(3, 1 , 'Paracetamol 500mg','Dolor leve o moderado y fiebre ', 50 , 10.00 , '02/11/2022','02/11/2025', 'G-1','N'),
 	(1, 1, 'Paracetamol 120mg/5ml','Dolor leve o moderado y fiebre',30 , 1.70 , '02/11/2022','02/11/2025', 'G-1','N'),
-	(2, 1, 'AmoxicilinaÂ 500Â mgÂ TabletaÂ -Â CajaÂ 100Â UN','Infecciones',20 , 10.00 , '02/11/2022','02/11/2025', 'G-1','N'),
+	(2, 1, 'Amoxicilina 500 mg Tableta - Caja 100 UN','Infecciones',20 , 10.00 , '02/11/2022','02/11/2025', 'G-1','N'),
 	(2, 6, 'Alcohol Puro 1000ml','Desinfectar',40, 8.20  , '02/11/2022','02/11/2025', 'G-1','N'),
 	(4, 6, 'Agua Oxigenada Alkofarma 1000ml','Desinfectar', 30  , 4.90  , '02/11/2022','02/11/2025', 'G-1','N'),
-	(4, 6 ,'Lidocaina Lusa 5% UngÃ¼ento', 'bloquear el dolor al reducir la conducciÃ³n de impulsos nerviosos', 20, 18.00,'03/01/2022','02/12/2025',' G-2',  'O'),
-	(4, 6 ,'Vick Vaporub UngÃ¼ento tÃ³pico', 'Ayuda a descongestionar las vÃ­as respiratorias, Calma la tos', 50, 2.25,'03/01/2022','02/12/2025',' G-2',  'N'),
+	(4, 6 ,'Lidocaina Lusa 5% Ungüento', 'bloquear el dolor al reducir la conducción de impulsos nerviosos', 20, 18.00,'03/01/2022','02/12/2025',' G-2',  'O'),
+	(4, 6 ,'Vick Vaporub Ungüento tópico', 'Ayuda a descongestionar las vías respiratorias, Calma la tos', 50, 2.25,'03/01/2022','02/12/2025',' G-2',  'N'),
 	(1, 1 , 'Panadol Forte Tableta', 'Alivia los dolores fuertes', 40, 1.69, '03/01/2022', '02/12/2025', 'G-2', 'N')
 GO
 
-select * from productos
+SELECT * FROM productos
 GO
 
 
@@ -232,6 +233,15 @@ GO
 INSERT INTO pagos (idventa, tipopago) VALUES
 	(1,'EFECTIVO')
 GO
+
+
+
+
+
+
+
+
+
 
 
 
