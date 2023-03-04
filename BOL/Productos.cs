@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BOL
 {
-    internal class Productos
+    public  class Productos
     {
+
     }
 }
