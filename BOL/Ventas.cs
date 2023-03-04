@@ -1,13 +1,17 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+<<<<<<< HEAD
 using DAL;
 using ENTITIES;
 using System.Net.Http.Headers;
+=======
+>>>>>>> 25f5dd3011dacacaa5c6fa71c426489be9d0ca4e
 
 namespace BOL
 {
@@ -15,6 +19,7 @@ namespace BOL
     {
         DBAccess acceso = new DBAccess();
 
+<<<<<<< HEAD
 
         public DataTable listar()
         {
@@ -45,6 +50,22 @@ namespace BOL
             return registrosAfectados;
 
         }
+=======
+        public DataTable buscarProducto(int idproducto)
+        {
+            DataTable data = new DataTable();
+            SqlCommand command = new SqlCommand("", acceso.getConexion());
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idproducto", idproducto);
+
+            acceso.conectar();
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(data);
+            acceso.desconectar();
+            return data;
+        }
+
+>>>>>>> 25f5dd3011dacacaa5c6fa71c426489be9d0ca4e
     }
 
   
