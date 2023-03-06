@@ -6,12 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-<<<<<<< HEAD
-using DAL;
 using ENTITIES;
 using System.Net.Http.Headers;
-=======
->>>>>>> 25f5dd3011dacacaa5c6fa71c426489be9d0ca4e
+
 
 namespace BOL
 {
@@ -19,7 +16,6 @@ namespace BOL
     {
         DBAccess acceso = new DBAccess();
 
-<<<<<<< HEAD
 
         public DataTable listar()
         {
@@ -50,7 +46,7 @@ namespace BOL
             return registrosAfectados;
 
         }
-=======
+
         public DataTable buscarProducto(int idproducto)
         {
             DataTable data = new DataTable();
@@ -65,7 +61,6 @@ namespace BOL
             return data;
         }
 
->>>>>>> 25f5dd3011dacacaa5c6fa71c426489be9d0ca4e
     }
 
   
