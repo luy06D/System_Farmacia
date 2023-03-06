@@ -67,7 +67,7 @@ end
 go
 
 create procedure spu_ventas_buscar(
-	@idproducto	INT
+	@idproducto	INT	
 )
 as
 begin
@@ -127,7 +127,16 @@ GO
 EXEC SPU_COMPRAS_LISTAR
 GO
 
+CREATE PROCEDURE SPU_PERSONAS_BUSCAR
+	@dni	CHAR(8)
+AS
+	SELECT nombres, apellidos
+	FROM personas
+	WHERE dni = @dni
+GO
 
+EXEC SPU_PERSONAS_BUSCAR '73196921'
+GO
 
 
 
