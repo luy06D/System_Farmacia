@@ -6,12 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-<<<<<<< HEAD
 using DAL;
 using ENTITIES;
 using System.Net.Http.Headers;
-=======
->>>>>>> 25f5dd3011dacacaa5c6fa71c426489be9d0ca4e
+
 
 namespace BOL
 {
@@ -19,11 +17,11 @@ namespace BOL
     {
         DBAccess acceso = new DBAccess();
 
-<<<<<<< HEAD
+
 
         public DataTable listar()
         {
-            return acceso.getDataGrid("", 1);
+            return acceso.getDataGrid("spu_productosV_listar", 1);
         }
 
 
@@ -50,11 +48,11 @@ namespace BOL
             return registrosAfectados;
 
         }
-=======
+
         public DataTable buscarProducto(int idproducto)
         {
             DataTable data = new DataTable();
-            SqlCommand command = new SqlCommand("", acceso.getConexion());
+            SqlCommand command = new SqlCommand("spu_ventas_buscar", acceso.getConexion());
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@idproducto", idproducto);
 
@@ -65,7 +63,7 @@ namespace BOL
             return data;
         }
 
->>>>>>> 25f5dd3011dacacaa5c6fa71c426489be9d0ca4e
+
     }
 
   
