@@ -361,6 +361,7 @@
             this.Controls.Add(this.rbBoleta);
             this.Name = "FrmVentas";
             this.Text = "FrmVentas";
+    
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
