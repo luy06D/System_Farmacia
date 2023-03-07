@@ -53,19 +53,18 @@ begin
 end
 go
 
-drop procedure spu_ventas_listar
-go
-
-create procedure spu_ventas_listar
+create procedure spu_ventas_listar(
+	@fechaventa date,
+	@tipocomprobante varchar(20)
+)
 as
 begin
 	select idventa,
-			fechaventa,
-			tipocomprobante
-		from ventas 
+			@fechaventa,
+			@tipocomprobante
+		from ventas where fechaventa = @fechaventa
 end
 go
-
 
 create procedure spu_ventas_buscar(
 	@idproducto	INT
@@ -90,24 +89,6 @@ begin
 end
 go
 
-<<<<<<< HEAD
---listar productos en ventas
-create procedure spu_productosV_listar
-(
-	@estado bit
-)
-as
-begin	
-	select idproducto, nombreproducto, precio,
-            cantidad, fechavencimiento,
-            recetamedica
-    FROM productos
-    WHERE estado = @estado
-end 
-go
-
-exec spu_productosV_listar 1
-=======
 
 
 -- ACTUALIZAR INVENTARIO (CAMBIAMOS LA CANTIDAD DEL PRODUCTO
@@ -146,18 +127,7 @@ GO
 EXEC SPU_COMPRAS_LISTAR
 GO
 
-CREATE PROCEDURE SPU_PERSONAS_BUSCAR
-	@dni	CHAR(8)
-AS
-	SELECT nombres, apellidos
-	FROM personas
-	WHERE dni = @dni
-GO
-
-EXEC SPU_PERSONAS_BUSCAR '73196921'
-GO
 
 
 
->>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
 

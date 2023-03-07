@@ -12,10 +12,6 @@ namespace BOL
 {
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
     public class Productos
     {
 
@@ -44,10 +40,6 @@ namespace BOL
             command.ExecuteNonQuery();
             acceso.desconectar();
         }
-<<<<<<< HEAD
-        
-=======
->>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
 
     }
 }
