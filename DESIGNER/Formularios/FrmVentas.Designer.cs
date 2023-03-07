@@ -32,17 +32,38 @@
             this.rdFactura = new System.Windows.Forms.RadioButton();
             this.BOLETA = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.gridVentas = new System.Windows.Forms.DataGridView();
+=======
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDni = new System.Windows.Forms.TextBox();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.txtCliente = new System.Windows.Forms.TextBox();
+            this.txtidproducto = new System.Windows.Forms.TextBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+=======
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,6 +73,10 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+            ((System.ComponentModel.ISupportInitialize)(this.gridVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+=======
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
@@ -60,6 +85,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
             this.SuspendLayout();
             // 
             // rbBoleta
@@ -99,12 +125,46 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(38, 73);
             this.label1.Name = "label1";
+<<<<<<< HEAD
+            this.label1.Size = new System.Drawing.Size(99, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Buscar producto:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+=======
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "DNI";
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
             // 
-            // textBox1
+            // txtBuscar
             // 
+<<<<<<< HEAD
+            this.txtBuscar.Location = new System.Drawing.Point(295, 15);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(221, 20);
+            this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Location = new System.Drawing.Point(587, 10);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.TabIndex = 2;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // gridVentas
+            // 
+            this.gridVentas.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gridVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridVentas.Location = new System.Drawing.Point(96, 62);
+            this.gridVentas.Name = "gridVentas";
+            this.gridVentas.Size = new System.Drawing.Size(755, 176);
+            this.gridVentas.TabIndex = 3;
+=======
             this.textBox1.Location = new System.Drawing.Point(41, 98);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(113, 20);
@@ -116,6 +176,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(414, 20);
             this.textBox2.TabIndex = 5;
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
             // 
             // label2
             // 
@@ -208,6 +269,67 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Cantidad:";
             // 
+<<<<<<< HEAD
+            // txtDni
+            // 
+            this.txtDni.Location = new System.Drawing.Point(378, 372);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(100, 20);
+            this.txtDni.TabIndex = 9;
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Location = new System.Drawing.Point(222, 372);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(55, 20);
+            this.txtCantidad.TabIndex = 10;
+            // 
+            // txtCliente
+            // 
+            this.txtCliente.Location = new System.Drawing.Point(378, 314);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(100, 20);
+            this.txtCliente.TabIndex = 11;
+            // 
+            // txtidproducto
+            // 
+            this.txtidproducto.Location = new System.Drawing.Point(224, 314);
+            this.txtidproducto.Name = "txtidproducto";
+            this.txtidproducto.Size = new System.Drawing.Size(53, 20);
+            this.txtidproducto.TabIndex = 12;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.btnAgregar.Location = new System.Drawing.Point(182, 457);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(84, 32);
+            this.btnAgregar.TabIndex = 13;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.button3.Location = new System.Drawing.Point(304, 457);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(112, 32);
+            this.button3.TabIndex = 14;
+            this.button3.Text = "Reiniciar Lista";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(542, 350);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(309, 126);
+            this.dataGridView2.TabIndex = 15;
+            // 
+=======
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
             // label7
             // 
             this.label7.AutoSize = true;
@@ -331,6 +453,14 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
+<<<<<<< HEAD
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.txtidproducto);
+            this.Controls.Add(this.txtCliente);
+            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.txtDni);
+            this.Controls.Add(this.label6);
+=======
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.label11);
@@ -349,19 +479,32 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox3);
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+<<<<<<< HEAD
+            this.Controls.Add(this.gridVentas);
+            this.Controls.Add(this.btnActualizar);
+            this.Controls.Add(this.txtBuscar);
+=======
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BOLETA);
             this.Controls.Add(this.rdFactura);
             this.Controls.Add(this.rbBoleta);
             this.Name = "FrmVentas";
             this.Text = "FrmVentas";
+<<<<<<< HEAD
+            this.Load += new System.EventHandler(this.FrmVentas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridVentas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+=======
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,17 +516,38 @@
         private System.Windows.Forms.RadioButton rdFactura;
         private System.Windows.Forms.Label BOLETA;
         private System.Windows.Forms.Label label1;
+<<<<<<< HEAD
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.DataGridView gridVentas;
+=======
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+<<<<<<< HEAD
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtDni;
+        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.TextBox txtidproducto;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label8;
+=======
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;

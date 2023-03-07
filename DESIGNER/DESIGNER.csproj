@@ -81,12 +81,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="dialogo.cs" />
+=======
     <Compile Include="Formularios\FrmInventario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FrmInventario.Designer.cs">
       <DependentUpon>FrmInventario.cs</DependentUpon>
     </Compile>
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
     <Compile Include="Formularios\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,12 +108,6 @@
     </Compile>
     <Compile Include="Formularios\FrmVentas.Designer.cs">
       <DependentUpon>FrmVentas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmProducto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmProducto.Designer.cs">
-      <DependentUpon>frmProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,9 +128,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmVentas.resx">
       <DependentUpon>FrmVentas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmProducto.resx">
-      <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
