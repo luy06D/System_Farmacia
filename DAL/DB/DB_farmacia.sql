@@ -1,4 +1,3 @@
-
 CREATE DATABASE FARMACHINCHA
 GO
 
@@ -109,12 +108,16 @@ CREATE TABLE compraproductos
 )
 GO
 
+SELECT * FROM detalle_compras
+GO
+
 INSERT INTO compraproductos (idusuario,idlaboratorio) VALUES
 	(1, 3 ),
 	(1, 1 ),
 	(4, 2 ),
 	(4, 4 )
 GO
+
 
 
 CREATE TABLE productos
@@ -167,6 +170,10 @@ CREATE TABLE detalle_compras
 	CONSTRAINT ck_can_detc CHECK (cantidad > 0)
 )
 GO
+-- AGREGANDO UN CAMPO FECHADETALLE A LA TABLA DETALLE_COMPRAS
+
+ALTER TABLE detalle_compras ADD fechadetalle DATETIME NOT NULL DEFAULT GETDATE()
+GO
 
 INSERT INTO detalle_compras (idcompraproducto, idproducto, cantidad, preciocompra) VALUES
 	(1, 1, 2, 10.00),
@@ -176,8 +183,23 @@ INSERT INTO detalle_compras (idcompraproducto, idproducto, cantidad, preciocompr
 
 GO
 
-SELECT * FROM personas
+SELECT * FROM detalle_compras
 GO
+
+
+-- SUMA LA CANTIDAD DE INVENTARIO CON LA COMPRA
+-- Y DEVUELTE LAS COMPRAS DE LA FECHA ACTUAL
+SELECT	PRO.idproducto,PRO.nombreproducto, 
+		SUM(PRO.cantidad) +  SUM (DC.cantidad) AS totalInventario,
+		DAY(DC.fechadetalle) AS Fecha_compraActual	
+FROM productos PRO
+INNER JOIN detalle_compras DC ON DC.idproducto = PRO.idproducto
+WHERE DAY(DC.fechadetalle) = DAY(GETDATE())
+GROUP BY PRO.idproducto, PRO.nombreproducto, DC.fechadetalle ,PRO.cantidad, DC.cantidad
+GO
+
+
+
 
 CREATE TABLE ventas
 (

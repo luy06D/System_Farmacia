@@ -24,6 +24,7 @@ namespace DESIGNER.Formularios
             InitializeComponent();
         }
 
+<<<<<<< HEAD
         private void FrmVentas_Load(object sender, EventArgs e)
         {
             CargaDatos();
@@ -74,5 +75,8 @@ namespace DESIGNER.Formularios
         {
 
         }
+=======
+        
+>>>>>>> 4837770d920981dd6562c7ddee64bbbcd201cd67
     }
 }
