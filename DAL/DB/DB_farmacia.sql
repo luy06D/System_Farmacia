@@ -108,8 +108,7 @@ CREATE TABLE compraproductos
 )
 GO
 
-SELECT * FROM detalle_compras
-GO
+
 
 INSERT INTO compraproductos (idusuario,idlaboratorio) VALUES
 	(1, 3 ),
@@ -142,20 +141,26 @@ CREATE TABLE productos
 )
 GO
 
-INSERT INTO productos (idlaboratorio, idcategoria, nombreproducto, descripcion, cantidad,
-						precio, fechaproduccion, fechavencimiento, numlote, recetamedica) VALUES
-	(3, 1 , 'Paracetamol 500mg','Dolor leve o moderado y fiebre ', 50 , 10.00 , '02/11/2022','02/11/2025', 'G-1','N'),
-	(1, 1, 'Paracetamol 120mg/5ml','Dolor leve o moderado y fiebre',30 , 1.70 , '02/11/2022','02/11/2025', 'G-1','N'),
-	(2, 1, 'Amoxicilina 500 mg Tableta - Caja 100 UN','Infecciones',20 , 10.00 , '02/11/2022','02/11/2025', 'G-1','N'),
-	(2, 6, 'Alcohol Puro 1000ml','Desinfectar',40, 8.20  , '02/11/2022','02/11/2025', 'G-1','N'),
-	(4, 6, 'Agua Oxigenada Alkofarma 1000ml','Desinfectar', 30  , 4.90  , '02/11/2022','02/11/2025', 'G-1','N'),
-	(4, 6 ,'Lidocaina Lusa 5% Ungüento', 'bloquear el dolor al reducir la conducción de impulsos nerviosos', 20, 18.00,'03/01/2022','02/12/2025',' G-2',  'O'),
-	(4, 6 ,'Vick Vaporub Ungüento tópico', 'Ayuda a descongestionar las vías respiratorias, Calma la tos', 50, 2.25,'03/01/2022','02/12/2025',' G-2',  'N'),
-	(1, 1 , 'Panadol Forte Tableta', 'Alivia los dolores fuertes', 40, 1.69, '03/01/2022', '02/12/2025', 'G-2', 'N')
+ALTER TABLE productos ADD barcode VARCHAR(20) NOT NULL
 GO
+
 
 SELECT * FROM productos
 GO
+INSERT INTO productos (idlaboratorio, idcategoria, nombreproducto, descripcion, cantidad,
+						precio, fechaproduccion, fechavencimiento, numlote, recetamedica,barcode) VALUES
+	(3, 1 , 'Paracetamol 500mg','Dolor leve o moderado y fiebre ', 50 , 10.00 , '02/11/2022','02/11/2025', 'G-1','N',10000000001),
+	(1, 1, 'Paracetamol 120mg/5ml','Dolor leve o moderado y fiebre',30 , 1.70 , '02/11/2022','02/11/2025', 'G-1','N',20000000002),
+	(2, 1, 'Amoxicilina 500 mg Tableta - Caja 100 UN','Infecciones',20 , 10.00 , '02/11/2022','02/11/2025', 'G-1','N',30000000003),
+	(2, 6, 'Alcohol Puro 1000ml','Desinfectar',40, 8.20  , '02/11/2022','02/11/2025', 'G-1','N',40000000004),
+	(4, 6, 'Agua Oxigenada Alkofarma 1000ml','Desinfectar', 30  , 4.90  , '02/11/2022','02/11/2025', 'G-1','N',50000000005),
+	(4, 6 ,'Lidocaina Lusa 5% Ungüento', 'bloquear el dolor al reducir la conducción de impulsos nerviosos', 20, 18.00,'03/01/2022','02/12/2025',' G-2',  'O',60000000006),
+	(4, 6 ,'Vick Vaporub Ungüento tópico', 'Ayuda a descongestionar las vías respiratorias, Calma la tos', 50, 2.25,'03/01/2022','02/12/2025',' G-2',  'N',70000000007),
+	(1, 1 , 'Panadol Forte Tableta', 'Alivia los dolores fuertes', 40, 1.69, '03/01/2022', '02/12/2025', 'G-2', 'N',80000000008)
+GO
+
+
+
 
 
 CREATE TABLE detalle_compras
@@ -174,6 +179,8 @@ GO
 
 ALTER TABLE detalle_compras ADD fechadetalle DATETIME NOT NULL DEFAULT GETDATE()
 GO
+
+
 
 INSERT INTO detalle_compras (idcompraproducto, idproducto, cantidad, preciocompra) VALUES
 	(1, 1, 2, 10.00),

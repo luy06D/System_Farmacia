@@ -124,19 +124,22 @@ AS
 GO
 
 
-EXEC SPU_COMPRAS_LISTAR
-GO
+-- BUSCAR PRODUCTO POR BARCODE 
 
-CREATE PROCEDURE SPU_PERSONAS_BUSCAR
-	@dni	CHAR(8)
+CREATE PROCEDURE SPU_BARCODE_BUSCAR
+		@barcode VARCHAR(20)
 AS
-	SELECT nombres, apellidos
-	FROM personas
-	WHERE dni = @dni
+SELECT 
+	CONCAT(nombreproducto,'/ ', descripcion)as Producto ,
+	cantidad , precio 
+	
+
+	FROM productos
+	WHERE barcode = @barcode
 GO
 
-EXEC SPU_PERSONAS_BUSCAR '73196921'
-GO
+exec SPU_BARCODE_BUSCAR '10000000001'
+go
 
 
 

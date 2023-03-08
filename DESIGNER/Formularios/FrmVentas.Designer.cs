@@ -109,6 +109,7 @@
             this.txtdatos.Name = "txtdatos";
             this.txtdatos.Size = new System.Drawing.Size(414, 20);
             this.txtdatos.TabIndex = 5;
+            
             // 
             // label2
             // 
@@ -322,7 +323,7 @@
             this.txtdni.Name = "txtdni";
             this.txtdni.Size = new System.Drawing.Size(111, 20);
             this.txtdni.TabIndex = 32;
-            this.txtdni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtdnd_KeyPress);
+            
             // 
             // FrmVentas
             // 
@@ -362,7 +363,6 @@
             this.Controls.Add(this.rbBoleta);
             this.Name = "FrmVentas";
             this.Text = "FrmVentas";
-    
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

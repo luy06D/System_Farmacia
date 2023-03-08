@@ -67,22 +67,7 @@ namespace BOL{
                 acceso.desconectar();
                 return eliminarProductos;
             }
-
-            public DataTable buscarPersona(int dni)
-            {
-                DataTable data = new DataTable();
-                SqlCommand command = new SqlCommand("SPU_PERSONAS_BUSCAR", acceso.getConexion());
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@dni", dni);
-
-                acceso.conectar();
-
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data);
-
-                acceso.desconectar();
-
-                return data;
-            }
+        
+            
         }
     }
