@@ -18,6 +18,7 @@ namespace DESIGNER.Formularios
     {
 
         Productos productos = new Productos();
+        Ventas ventas = new Ventas();
         DataTable dt = new DataTable();
         
 
@@ -82,7 +83,60 @@ namespace DESIGNER.Formularios
                     MessageBox.Show("Registrado correctamente");
                 }
             }
-        }  
+        }
 
+        private void FrmVentas_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtdni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (txtdni.Text != "")
+                {
+                    dt = ventas.buscarPersona(Convert.ToInt32(txtdni.Text));
+
+                    txtdatos.Text = dt.Rows[0][0].ToString();
+                }
+            }
+        }
+
+        private void txtruc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (txtruc.Text != "")
+                {
+                    dt = ventas.buscarEmpresa(Convert.ToString(txtruc.Text));
+
+                    txtempresa.Text = dt.Rows[0][0].ToString();
+                }
+            }
+        }
+
+        private void rbBoleta_CheckedChanged(object sender, EventArgs e)
+        {
+            txtdni.Visible = true;
+            txtdatos.Visible = true;
+            txtruc.Visible = false;
+            txtempresa.Visible = false;
+
+            lbldni.Text = "DNI";
+            lbldatos.Text = "Datos del Cliente";
+        }
+
+        private void rdFactura_CheckedChanged(object sender, EventArgs e)
+        {
+            txtdni.Visible = false;
+            txtdatos.Visible = false;
+            txtruc.Visible = true;
+            txtempresa.Visible = true;
+
+
+            lbldni.Text = "RUC";
+            lbldatos.Text = "Nombre Empresa";
+        }
     }
 }
