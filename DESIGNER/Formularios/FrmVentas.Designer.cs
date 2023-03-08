@@ -38,8 +38,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnReiniciar = new System.Windows.Forms.Button();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,12 +57,10 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numCantidad = new System.Windows.Forms.NumericUpDown();
             this.txtBarcode = new System.Windows.Forms.TextBox();
-
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             this.SuspendLayout();
             // 
             // rbBoleta
@@ -112,7 +110,6 @@
             this.txtdatos.Name = "txtdatos";
             this.txtdatos.Size = new System.Drawing.Size(414, 20);
             this.txtdatos.TabIndex = 5;
-            
             // 
             // label2
             // 
@@ -157,23 +154,24 @@
             this.txtDescripcion.Size = new System.Drawing.Size(414, 20);
             this.txtDescripcion.TabIndex = 11;
             // 
-            // button1
+            // btnAgregar
             // 
-            this.button1.Location = new System.Drawing.Point(659, 143);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 44);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAgregar.Location = new System.Drawing.Point(659, 143);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(136, 44);
+            this.btnAgregar.TabIndex = 12;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnReiniciar
             // 
-            this.button2.Location = new System.Drawing.Point(659, 206);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 36);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Réiniciar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnReiniciar.Location = new System.Drawing.Point(659, 206);
+            this.btnReiniciar.Name = "btnReiniciar";
+            this.btnReiniciar.Size = new System.Drawing.Size(136, 36);
+            this.btnReiniciar.TabIndex = 13;
+            this.btnReiniciar.Text = "Réiniciar";
+            this.btnReiniciar.UseVisualStyleBackColor = true;
+            this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
             // 
             // txtStock
             // 
@@ -313,13 +311,12 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 31;
             // 
-
-            // numericUpDown1
+            // numCantidad
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(487, 222);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 32;
+            this.numCantidad.Location = new System.Drawing.Point(487, 222);
+            this.numCantidad.Name = "numCantidad";
+            this.numCantidad.Size = new System.Drawing.Size(120, 20);
+            this.numCantidad.TabIndex = 32;
             // 
             // txtBarcode
             // 
@@ -330,17 +327,14 @@
             this.txtBarcode.TabIndex = 33;
             this.txtBarcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBarcode_KeyPress);
-
             // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(881, 575);
-
             this.Controls.Add(this.txtBarcode);
-            this.Controls.Add(this.numericUpDown1);
-
+            this.Controls.Add(this.numCantidad);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -358,8 +352,8 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtStock);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnReiniciar);
+            this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -372,9 +366,8 @@
             this.Controls.Add(this.rbBoleta);
             this.Name = "FrmVentas";
             this.Text = "FrmVentas";
-            this.Load += new System.EventHandler(this.FrmVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,8 +385,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnReiniciar;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label label6;
@@ -411,7 +404,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numCantidad;
         private System.Windows.Forms.TextBox txtBarcode;
 
     }

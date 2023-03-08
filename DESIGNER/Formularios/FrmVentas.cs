@@ -39,10 +39,14 @@ namespace DESIGNER.Formularios
             }
         }
 
-        private void FrmVentas_Load(object sender, EventArgs e)
+        private void btnReiniciar_Click(object sender, EventArgs e)
         {
 
+            txtBarcode.Clear();
+            txtDescripcion.Clear();
+            txtStock.Clear();
+            txtPrecio.Clear();
+            numCantidad.Value = 0;
         }
-
     }
 }

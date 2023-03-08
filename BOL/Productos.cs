@@ -46,9 +46,9 @@ namespace BOL
         public  DataTable buscarBarCode(string barcode)
         {
             DataTable data = new DataTable();
-            SqlCommand command = new SqlCommand("", acceso.getConexion());
+            SqlCommand command = new SqlCommand("SPU_BARCODE_BUSCAR", acceso.getConexion());
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("", barcode);
+            command.Parameters.AddWithValue("@barcode", barcode);
 
             acceso.conectar();
             SqlDataAdapter adapter = new SqlDataAdapter(command);
