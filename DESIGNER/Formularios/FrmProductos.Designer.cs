@@ -231,6 +231,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmProductos";
             this.Text = "FrmProductos";
+            this.Load += new System.EventHandler(this.FrmProductos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

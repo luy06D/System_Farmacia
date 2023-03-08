@@ -16,5 +16,10 @@ namespace DESIGNER.Formularios
         {
             InitializeComponent();
         }
+
+        private void FrmProductos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

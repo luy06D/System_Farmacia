@@ -67,7 +67,7 @@ end
 go
 
 create procedure spu_ventas_buscar(
-	@idproducto	INT
+	@idproducto	INT	
 )
 as
 begin
@@ -124,10 +124,22 @@ AS
 GO
 
 
-EXEC SPU_COMPRAS_LISTAR
+-- BUSCAR PRODUCTO POR BARCODE 
+
+CREATE PROCEDURE SPU_BARCODE_BUSCAR
+		@barcode VARCHAR(20)
+AS
+SELECT 
+	CONCAT(nombreproducto,'/ ', descripcion)as Producto ,
+	cantidad , precio 
+	
+
+	FROM productos
+	WHERE barcode = @barcode
 GO
 
-
+exec SPU_BARCODE_BUSCAR '10000000001'
+go
 
 
 

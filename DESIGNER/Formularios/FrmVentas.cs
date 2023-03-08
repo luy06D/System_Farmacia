@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BOL;
+using ENTITIES;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,15 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BOL;
+
 
 namespace DESIGNER.Formularios
 {
     public partial class FrmVentas : Form
     {
+
         Productos productos = new Productos();
         DataTable dt = new DataTable();
         
+
         public FrmVentas()
         {
             InitializeComponent();
@@ -39,5 +43,6 @@ namespace DESIGNER.Formularios
         {
 
         }
+
     }
 }
