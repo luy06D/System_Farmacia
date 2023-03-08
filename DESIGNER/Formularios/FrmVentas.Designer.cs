@@ -151,21 +151,22 @@
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(193, 167);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(414, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(469, 20);
             this.txtDescripcion.TabIndex = 11;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(659, 143);
+            this.btnAgregar.Location = new System.Drawing.Point(679, 143);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(136, 44);
             this.btnAgregar.TabIndex = 12;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+    
             // 
             // btnReiniciar
             // 
-            this.btnReiniciar.Location = new System.Drawing.Point(659, 206);
+            this.btnReiniciar.Location = new System.Drawing.Point(679, 206);
             this.btnReiniciar.Name = "btnReiniciar";
             this.btnReiniciar.Size = new System.Drawing.Size(136, 36);
             this.btnReiniciar.TabIndex = 13;
