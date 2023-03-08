@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,13 +30,28 @@ namespace DESIGNER.Formularios
         {
             if(e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                dt = productos.buscarBarCode(Convert.ToString(txtBarcode.Text));
+                if(txtBarcode.Text != "" )          
+                {                  
+                    dt = productos.buscarBarCode(Convert.ToString(txtBarcode.Text));
 
-                txtDescripcion.Text = dt.Rows[0][0].ToString();
-                txtStock.Text = dt.Rows[0][1].ToString();
-                txtPrecio.Text = dt.Rows[0][2].ToString();
-      
-             
+                    if (dt.Rows.Count > 0)                 
+                    {
+                        txtDescripcion.Text = dt.Rows[0][0].ToString();
+                        txtStock.Text = dt.Rows[0][1].ToString();
+                        txtPrecio.Text = dt.Rows[0][2].ToString();
+                    }
+                    else
+                    {
+                          MessageBox.Show("No existe el codigo" + " " + txtBarcode.Text, "CODEBAR" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese el codigo del producto", "Codebar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+
             }
         }
 
@@ -48,6 +64,7 @@ namespace DESIGNER.Formularios
             txtPrecio.Clear();
             numCantidad.Value = 0;
         }
+
 
         private DialogResult pregunta(string pregunta)
         {
@@ -66,5 +83,6 @@ namespace DESIGNER.Formularios
                 }
             }
         }  
+
     }
 }
