@@ -48,5 +48,23 @@ namespace DESIGNER.Formularios
             txtPrecio.Clear();
             numCantidad.Value = 0;
         }
+
+        private DialogResult pregunta(string pregunta)
+        {
+            return MessageBox.Show(pregunta, "Sistema - Personas", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+        }
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            if (pregunta("¿Desea agrega un nuevo producto a la lista?") == DialogResult.Yes)
+            {
+                if (txtDescripcion.Text != "" && txtStock.Text != "" && txtPrecio.Text != "" && numCantidad.Text != "")
+                {
+                    gridProductos.Rows.Add(txtDescripcion.Text, txtStock.Text, txtPrecio.Text,numCantidad.Text);
+                    
+                    MessageBox.Show("Registrado correctamente");
+                }
+            }
+        }  
     }
 }

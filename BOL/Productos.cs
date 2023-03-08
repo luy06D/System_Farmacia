@@ -33,7 +33,7 @@ namespace BOL
             command.Parameters.AddWithValue("@cantidad", cantidad );
             command.Parameters.AddWithValue("@precio", precio );
             command.Parameters.AddWithValue("@fechaproduccion", fechaproduccion );
-            command.Parameters.AddWithValue("@fechavencimiento", fechaproduccion );
+            command.Parameters.AddWithValue("@fechavencimiento", fechavencimiento);
             command.Parameters.AddWithValue("@numlote", numlote );
             command.Parameters.AddWithValue("@recetamedica", recetamedica );
 

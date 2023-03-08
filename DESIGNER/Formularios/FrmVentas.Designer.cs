@@ -45,7 +45,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gridProductos = new System.Windows.Forms.DataGridView();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
@@ -59,14 +59,18 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.numCantidad = new System.Windows.Forms.NumericUpDown();
             this.txtBarcode = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Descrpcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.gridProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             this.SuspendLayout();
             // 
             // rbBoleta
             // 
             this.rbBoleta.AutoSize = true;
-            this.rbBoleta.Location = new System.Drawing.Point(650, 47);
+            this.rbBoleta.Location = new System.Drawing.Point(632, 37);
             this.rbBoleta.Name = "rbBoleta";
             this.rbBoleta.Size = new System.Drawing.Size(55, 17);
             this.rbBoleta.TabIndex = 0;
@@ -77,7 +81,7 @@
             // rdFactura
             // 
             this.rdFactura.AutoSize = true;
-            this.rdFactura.Location = new System.Drawing.Point(785, 47);
+            this.rdFactura.Location = new System.Drawing.Point(762, 37);
             this.rdFactura.Name = "rdFactura";
             this.rdFactura.Size = new System.Drawing.Size(61, 17);
             this.rdFactura.TabIndex = 1;
@@ -123,7 +127,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(647, 79);
+            this.label3.Location = new System.Drawing.Point(629, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 8;
@@ -162,6 +166,7 @@
             this.btnAgregar.TabIndex = 12;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnReiniciar
             // 
@@ -214,31 +219,40 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Stock:";
             // 
-            // dataGridView1
+            // gridProductos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(41, 263);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(805, 127);
-            this.dataGridView1.TabIndex = 20;
+            this.gridProductos.AllowUserToAddRows = false;
+            this.gridProductos.AllowUserToDeleteRows = false;
+            this.gridProductos.AllowUserToOrderColumns = true;
+            this.gridProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Descrpcion,
+            this.stock,
+            this.Precio,
+            this.cantidad});
+            this.gridProductos.Location = new System.Drawing.Point(41, 263);
+            this.gridProductos.Name = "gridProductos";
+            this.gridProductos.ReadOnly = true;
+            this.gridProductos.Size = new System.Drawing.Size(791, 127);
+            this.gridProductos.TabIndex = 20;
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(727, 459);
+            this.textBox7.Location = new System.Drawing.Point(713, 459);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(119, 20);
             this.textBox7.TabIndex = 21;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(727, 433);
+            this.textBox8.Location = new System.Drawing.Point(713, 433);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(119, 20);
             this.textBox8.TabIndex = 22;
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(727, 407);
+            this.textBox9.Location = new System.Drawing.Point(713, 407);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(119, 20);
             this.textBox9.TabIndex = 23;
@@ -246,7 +260,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(656, 466);
+            this.label9.Location = new System.Drawing.Point(622, 463);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(33, 13);
             this.label9.TabIndex = 24;
@@ -255,7 +269,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(656, 440);
+            this.label10.Location = new System.Drawing.Point(622, 440);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(28, 13);
             this.label10.TabIndex = 25;
@@ -264,7 +278,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(656, 414);
+            this.label11.Location = new System.Drawing.Point(622, 414);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 13);
             this.label11.TabIndex = 26;
@@ -306,7 +320,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(650, 98);
+            this.dateTimePicker1.Location = new System.Drawing.Point(632, 98);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 31;
@@ -314,9 +328,19 @@
             // numCantidad
             // 
             this.numCantidad.Location = new System.Drawing.Point(487, 222);
+            this.numCantidad.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numCantidad.Name = "numCantidad";
             this.numCantidad.Size = new System.Drawing.Size(120, 20);
             this.numCantidad.TabIndex = 32;
+            this.numCantidad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // txtBarcode
             // 
@@ -327,6 +351,33 @@
             this.txtBarcode.TabIndex = 33;
             this.txtBarcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBarcode_KeyPress);
+            // 
+            // Descrpcion
+            // 
+            this.Descrpcion.HeaderText = "Descripcion";
+            this.Descrpcion.Name = "Descrpcion";
+            this.Descrpcion.ReadOnly = true;
+            this.Descrpcion.Width = 350;
+            // 
+            // stock
+            // 
+            this.stock.HeaderText = "Stock";
+            this.stock.Name = "stock";
+            this.stock.ReadOnly = true;
+            this.stock.Width = 150;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 150;
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            this.cantidad.ReadOnly = true;
             // 
             // FrmVentas
             // 
@@ -346,7 +397,7 @@
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gridProductos);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -366,7 +417,7 @@
             this.Controls.Add(this.rbBoleta);
             this.Name = "FrmVentas";
             this.Text = "FrmVentas";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -392,7 +443,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridProductos;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.TextBox textBox9;
@@ -406,6 +457,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.NumericUpDown numCantidad;
         private System.Windows.Forms.TextBox txtBarcode;
-
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descrpcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
     }
 }
