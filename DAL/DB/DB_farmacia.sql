@@ -200,18 +200,32 @@ GO
 
 
 
+-- CREANDO LA ENTIDAD EMPRESAS
+CREATE TABLE empresas
+(
+	idempresa		INT IDENTITY(1,1) PRIMARY KEY,
+	nombre			VARCHAR(50)		NOT NULL,
+	ruc				CHAR(11)		NOT NULL,
+	CONSTRAINT	ck_ruc_emp CHECK (ruc LIKE('[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')),
+	CONSTRAINT	uk_ruc_emp UNIQUE(ruc)
+)
+GO
+
 
 CREATE TABLE ventas
 (
 	idventa				INT IDENTITY(1,1) PRIMARY KEY,
-	idcliente			INT			NOT NULL,
+	idcliente			INT			NULL,
 	idusuario			INT			NOT NULL,
+	idempresa			INT			NULL,
 	fechaventa			DATETIME	NOT NULL DEFAULT GETDATE(),
 	tipocomprobante		VARCHAR(20)	NOT NULL,
 	CONSTRAINT fk_idcli_ven FOREIGN KEY (idcliente) REFERENCES personas (idpersona),
-	CONSTRAINT fk_idusu_ven FOREIGN KEY (idusuario) REFERENCES usuarios (idusuario)
+	CONSTRAINT fk_idusu_ven FOREIGN KEY (idusuario) REFERENCES usuarios (idusuario),
+	CONSTRAINT fk_idem_ven FOREIGN KEY (idempresa) REFERENCES empresas (idempresa)
 )
 GO
+
 
 INSERT INTO ventas (idcliente, idusuario, tipocomprobante) VALUES
 	(6, 1, 'BOLETA')

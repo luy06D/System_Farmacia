@@ -103,6 +103,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "FrmLogin";
             this.Text = "FrmLogin";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

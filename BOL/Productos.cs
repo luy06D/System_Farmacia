@@ -41,5 +41,22 @@ namespace BOL
             acceso.desconectar();
         }
 
+
+        //Método para obtener los datos del producto mediante barcode
+        public  DataTable buscarBarCode(string barcode)
+        {
+            DataTable data = new DataTable();
+            SqlCommand command = new SqlCommand("", acceso.getConexion());
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("", barcode);
+
+            acceso.conectar();
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(data);
+            acceso.desconectar();
+            return data;
+
+        }
+
     }
 }

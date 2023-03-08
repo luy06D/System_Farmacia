@@ -72,6 +72,8 @@ namespace DESIGNER.Test
                 imgCodigo.Save(ventanaDialogo.FileName, ImageFormat.Png);
                 MessageBox.Show("La imagen a sido guardada");
             }
+
+
         }
     }
 }
