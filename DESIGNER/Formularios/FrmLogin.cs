@@ -64,7 +64,7 @@ namespace DESIGNER.Formularios
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            pictureBox1.BringToFront();
+            pictureBox2.BringToFront();
             txtContraseña.PasswordChar = '*';
         }
 

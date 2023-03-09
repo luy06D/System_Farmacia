@@ -112,7 +112,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::DESIGNER.Properties.Resources.ojo;
-            this.pictureBox2.Location = new System.Drawing.Point(472, 213);
+            this.pictureBox2.Location = new System.Drawing.Point(428, 213);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(38, 20);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
