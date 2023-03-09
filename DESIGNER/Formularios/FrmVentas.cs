@@ -20,7 +20,7 @@ namespace DESIGNER.Formularios
         Productos productos = new Productos();
         Ventas ventas = new Ventas();
         DataTable dt = new DataTable();
-        
+
 
         public FrmVentas()
         {
@@ -29,13 +29,13 @@ namespace DESIGNER.Formularios
 
         private void txtBarcode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == Convert.ToChar(Keys.Enter))
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                if(txtBarcode.Text != "" )          
-                {                  
+                if (txtBarcode.Text != "")
+                {
                     dt = productos.buscarBarCode(Convert.ToString(txtBarcode.Text));
 
-                    if (dt.Rows.Count > 0)                 
+                    if (dt.Rows.Count > 0)
                     {
                         txtDescripcion.Text = dt.Rows[0][0].ToString();
                         txtStock.Text = dt.Rows[0][1].ToString();
@@ -43,7 +43,7 @@ namespace DESIGNER.Formularios
                     }
                     else
                     {
-                          MessageBox.Show("No existe el codigo" + " " + txtBarcode.Text, "CODEBAR" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No existe el codigo" + " " + txtBarcode.Text, "CODEBAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
                 }
@@ -78,17 +78,14 @@ namespace DESIGNER.Formularios
             {
                 if (txtDescripcion.Text != "" && txtStock.Text != "" && txtPrecio.Text != "" && numCantidad.Text != "")
                 {
-                    gridProductos.Rows.Add(txtDescripcion.Text, txtStock.Text, txtPrecio.Text,numCantidad.Text);
-                    
+                    gridProductos.Rows.Add(txtDescripcion.Text, txtStock.Text, txtPrecio.Text, numCantidad.Text);
+
                     MessageBox.Show("Registrado correctamente");
                 }
             }
         }
 
-        private void FrmVentas_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void txtdni_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -138,5 +135,49 @@ namespace DESIGNER.Formularios
             lbldni.Text = "RUC";
             lbldatos.Text = "Nombre Empresa";
         }
+
+
+        private void FrmVentas_Load(object sender, EventArgs e)
+        {
+            //Instancia de un boton de columna
+            DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
+
+            //Nombre del boton de cada fila del grid
+            btnEliminar.Name = "Eliminar";
+            gridProductos.Columns.Add(btnEliminar);
+
+
+
+        }
+
+        private void gridProductos_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            //Si tenemos columnas en el grid 
+            if (e.ColumnIndex >= 0
+                && gridProductos.Columns[e.ColumnIndex].Name == "Eliminar" // y si la columna es la columna eliminar
+                && e.RowIndex >= 0)
+            {
+                //Render (pintar ) icono dentro del boton
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All); //Utiliza todo el espacio disponible
+
+                //Construir icono 
+                DataGridViewButtonCell celBtn = gridProductos.Rows[e.RowIndex].Cells["Eliminar"] as DataGridViewButtonCell;
+                //Imagen (archivo ICO)
+
+                Icon icono = new Icon(Environment.CurrentDirectory + @"\delete-file256_25240.ico");
+                //Pintar el icono 
+                e.Graphics.DrawIcon(icono, e.CellBounds.Left + 2, e.CellBounds.Top + 2);
+
+                //Lo enviamos al grid 
+                gridProductos.Rows[e.RowIndex].Height = icono.Height + 2;
+                gridProductos.Columns[e.RowIndex].Width = icono.Width + 2;
+
+                //Activamos el control de eventos sobre el nuevo boton 
+                e.Handled = true;
+            }
+        }
+
+
+
     }
 }

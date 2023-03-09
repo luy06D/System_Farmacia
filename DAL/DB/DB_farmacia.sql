@@ -62,6 +62,10 @@ update usuarios set claveacceso = '$2a$06$tVBMuKRoxunGnj6zZCIWtucDJgRNl9lpNJRL1g
 go
 
 
+
+
+
+
 CREATE TABLE laboratorios
 (
 	idlaboratorio		INT IDENTITY(1,1) PRIMARY KEY,
