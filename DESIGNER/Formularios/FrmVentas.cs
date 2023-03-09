@@ -76,13 +76,54 @@ namespace DESIGNER.Formularios
         {
             if (pregunta("¿Desea agrega un nuevo producto a la lista?") == DialogResult.Yes)
             {
+
                 if (txtDescripcion.Text != "" && txtStock.Text != "" && txtPrecio.Text != "" && numCantidad.Text != "")
                 {
-                    gridProductos.Rows.Add(txtDescripcion.Text, txtStock.Text, txtPrecio.Text, numCantidad.Text);
+                    DataGridViewRow file = new DataGridViewRow();
+                    file.CreateCells(gridProductos);
 
-                    MessageBox.Show("Registrado correctamente");
+                    file.Cells[0].Value = txtDescripcion.Text;
+                    file.Cells[1].Value = txtStock.Text;
+                    file.Cells[2].Value = txtPrecio.Text;
+                    file.Cells[3].Value = numCantidad.Text;
+                    file.Cells[4].Value = Convert.ToDouble(txtPrecio.Text) * Convert.ToDouble(numCantidad.Text);
+
+                    gridProductos.Rows.Add(file); 
+                    txtDescripcion.Text = txtStock.Text = txtPrecio.Text  = "";
+ 
+                    double sub = 0;
+                    int contador = 0;
+                    double igvs = 0.18;
+
+
+
+                    contador = gridProductos.RowCount;
+
+                    for (int i = 0; i < contador; i++)
+                    {
+                        sub += double.Parse(gridProductos.Rows[i].Cells[4].Value.ToString());
+                   
+                    }
+
+                    double igv = sub * igvs;
+                    double neto = sub + igv;
+
+                    txtsub.Text = sub.ToString();
+                    txtigv.Text = igv.ToString();
+                    txtneto.Text = neto.ToString();
+
+                    
+                    
+                }else
+
+                {
+                    MessageBox.Show("ERROR, Producto no encontrado ");
                 }
+                
+
+
             }
+
         }
 
 
