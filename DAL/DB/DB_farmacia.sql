@@ -223,6 +223,13 @@ CREATE TABLE empresas
 )
 GO
 
+INSERT INTO empresas(nombre, ruc) VALUES
+	('Sanofi', 10793420394),
+	('Bayer', 20693023598),
+	('Lilly', 17702394689),
+	('Dormunt',20604932946)
+GO
+
 
 CREATE TABLE ventas
 (
