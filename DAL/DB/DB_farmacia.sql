@@ -35,6 +35,7 @@ INSERT INTO personas (nombres, apellidos , dni) VALUES
 GO
 
 
+
 CREATE TABLE usuarios
 (
 	idusuario		INT IDENTITY(1,1) PRIMARY KEY,
@@ -55,6 +56,10 @@ INSERT INTO usuarios ( idpersona ,nomusuarios, claveacceso) VALUES
 	(4,'zocer_mono','12345'),
 	(5,'eduin11','12345')
 GO
+
+update usuarios set claveacceso = '$2a$06$tVBMuKRoxunGnj6zZCIWtucDJgRNl9lpNJRL1gfByvS69K9rYJKjK' 
+
+go
 
 
 CREATE TABLE laboratorios

@@ -3,17 +3,18 @@ GO
 
 
 create procedure spu_usuarios_login(
-@nomusuarios	VARCHAR(30),
-@claveacceso	VARCHAR(100)
+@nomusuarios	VARCHAR(30)
+
 )
 as
 begin
 	select	usuarios.idusuario,
+	personas.idpersona,
 			usuarios.nomusuarios, usuarios.claveacceso,
-			personas.nombres, personas.apellidos
-	from usuarios INNER JOIN personas on personas.idpersona = usuarios.idusuario
+			usuarios.estado
+	from usuarios INNER JOIN personas on usuarios.idpersona = usuarios.idusuario
 	where	usuarios.nomusuarios = @nomusuarios AND
-			usuarios.claveacceso = @claveacceso AND
+			
 			usuarios.estado = 1
 end
 go

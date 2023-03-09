@@ -14,14 +14,13 @@ namespace BOL
     public class Usuario
     {
         DBAccess acceso = new DBAccess();
-        public DataTable iniciarSesion(string nombreUsuario ,string claveacceso)
+        public DataTable iniciarSesion(string nomusuarios)
         {
             DataTable dataTable = new DataTable();
             acceso.conectar();
-            SqlCommand command = new SqlCommand( "" ,acceso.getConexion());
+            SqlCommand command = new SqlCommand("spu_usuarios_login", acceso.getConexion());
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@nombreusuario", nombreUsuario);
-            command.Parameters.AddWithValue("@claveacceso", claveacceso);
+            command.Parameters.AddWithValue("@nomusuarios", nomusuarios);
 
             dataTable.Load(command.ExecuteReader());
 
