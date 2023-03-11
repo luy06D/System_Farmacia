@@ -11,27 +11,46 @@ using System.Web;
 using System.Net.Http.Headers;
 
 namespace BOL{
-    public class Ventas{
+    public class Ventas
+    {
+       
         DBAccess acceso = new DBAccess();
+        
+
             public DataTable listar(){
                 return acceso.getDataGrid("", 1);
             }
 
-            public int registrarVentas(EVentas entidad){
-                int registrosAfectados = 0;
-                acceso.conectar();
-                SqlCommand sqlCommand = new SqlCommand("", acceso.getConexion());
+            public void registrarVentas(EVentas eVentas , DataTable detalleVenta)
+            {
+                SqlCommand sqlCommand = new SqlCommand("SPU_VENTA_REGISTRAR", acceso.getConexion());
                 sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@nombreProducto", entidad.nombreProducto);
-                sqlCommand.Parameters.AddWithValue("@descripcion", entidad.descripcion);
-                sqlCommand.Parameters.AddWithValue("@precio", entidad.precio);
-                sqlCommand.Parameters.AddWithValue("@cantidad", entidad.cantidad);
-                sqlCommand.Parameters.AddWithValue("@fechaVencimiento", entidad.fechaVencimiento);
-                sqlCommand.Parameters.AddWithValue("@recetaMedica", entidad.recetaMedica);
+                acceso.conectar();
+
+                sqlCommand.Parameters.AddWithValue("@idcliente", eVentas.ocliente);
+                sqlCommand.Parameters.AddWithValue("@idusuario", eVentas.ousuario);
+                sqlCommand.Parameters.AddWithValue("@idempresa", eVentas.oempresa);
+                sqlCommand.Parameters.AddWithValue("@tipocomprobante", eVentas.tipoComprobante);
+                sqlCommand.Parameters.AddWithValue("@detalleVenta", detalleVenta);
+
+                sqlCommand.ExecuteNonQuery();
                 acceso.desconectar();
-                return registrosAfectados;
+
+
             }
 
+
+
+
+
+
+
+
+
+
+
+
+            
             public DataTable buscarProducto(int idproducto){
                 DataTable data = new DataTable();
                 SqlCommand command = new SqlCommand(" ", acceso.getConexion());
@@ -44,19 +63,6 @@ namespace BOL{
                 return data;
             }
 
-            public int actualizarProductos(EVentas entidad){
-                int actualizarproducto = 0;
-                acceso.conectar();
-                SqlCommand sqlCommand = new SqlCommand(" ", acceso.getConexion());
-                sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@nombreProducto", entidad.nombreProducto);
-                sqlCommand.Parameters.AddWithValue("@descripcion", entidad.descripcion);
-                sqlCommand.Parameters.AddWithValue("@precio", entidad.precio);
-                sqlCommand.Parameters.AddWithValue("@cantidad", entidad.cantidad);
-                sqlCommand.Parameters.AddWithValue("@fechaVencimiento", entidad.fechaVencimiento);
-                acceso.desconectar();
-                return actualizarproducto;
-            }
     
             public int eliminarProductos(int idproducto){
                 int eliminarProductos = 1;

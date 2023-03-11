@@ -41,6 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ecategorias.cs" />
+    <Compile Include="Eclientes.cs" />
+    <Compile Include="Edetalle_venta.cs" />
+    <Compile Include="Eempresa.cs" />
+    <Compile Include="Elaboratorios.cs" />
+    <Compile Include="Epersonas.cs" />
+    <Compile Include="Eproductos.cs" />
+    <Compile Include="Eusuarios.cs" />
     <Compile Include="EVentas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

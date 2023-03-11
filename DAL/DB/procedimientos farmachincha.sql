@@ -166,3 +166,90 @@ EXEC SPU_EMPRESAS_BUSCAR '20693023598'
 GO
 
 
+-- REGISTRAR CLIENTE
+CREATE PROCEDURE SPU_CLIENTE_REGISTRAR
+	@nombres	VARCHAR(40),
+	@apellidos	VARCHAR(40),
+	@dni		CHAR(8)
+
+AS
+	INSERT INTO personas (nombres, apellidos, dni) VALUES
+				(@nombres, @apellidos, @dni)
+
+GO
+
+EXEC SPU_CLIENTE_REGISTRAR 'Adriana Maria','Cuenca Palma','22223240'
+GO
+
+
+
+--Procedimiento agregar Empresa 
+
+CREATE PROCEDURE SPU_EMPRESA_REGISTRAR
+(
+	@nombre VARCHAR(50),
+	@ruc	CHAR(20)
+)
+AS
+BEGIN
+	INSERT INTO empresas (nombre, ruc)
+			VALUES (@nombre,@ruc)
+END
+GO
+
+exec SPU_EMPRESA_REGISTRAR 'Real', 12345708905 
+go
+
+
+CREATE TYPE [dbo].[detalle_Venta] AS TABLE(	
+	[idproducto]	INT			NOT NULL,
+	[cantidad]		SMALLINT	NOT NULL,
+	[unidad]		VARCHAR(30)	NOT NULL,
+	[precioVenta]	DECIMAL(7,2)NOT NULL
+)
+GO
+
+
+CREATE PROCEDURE SPU_VENTA_REGISTRAR
+
+@idcliente			INT ,
+@idusuario			INT ,
+@idempresa			INT ,
+@tipocomprobante	VARCHAR(20)	,
+@detalleVenta [detalle_Venta] READONLY
+AS
+	BEGIN TRY
+
+		DECLARE @idventa  INT = 0
+	
+		-- REGISTRA TEMPORALMENTE LOS DATOS 
+		BEGIN TRANSACTION registro
+
+		INSERT INTO ventas (idcliente, idusuario, idempresa, tipocomprobante)
+					VALUES(@idcliente, @idusuario, @idempresa, @tipocomprobante)
+		
+		-- ALMACENAMOS EL ID QUE SE GENERA EN VENTAS
+		SET @idventa = SCOPE_IDENTITY()
+
+		INSERT INTO detalle_ventas (idventa, idproducto, cantidad, unidad, precioventa)
+		-- HACEMOS UNA CONSULTA AL PARAMETRO @detalleVenta
+		SELECT @idventa, idproducto, cantidad, unidad, precioVenta  FROM @detalleVenta
+
+		UPDATE PRO SET PRO.cantidad = PRO.cantidad - DV.cantidad
+		FROM productos PRO
+		INNER JOIN detalle_ventas DV ON DV.idproducto = PRO.idproducto
+
+			
+		-- SI LAS OPERACIONES TIENEN UN ERROR SE ELIMINA LOS REGISTROS TEMPORALES
+		-- SI EL REGISTRO FUE CORRECTO PROCEDE A REGISTRARSE EN LA BD
+		COMMIT TRANSACTION registro
+
+	END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION registro
+	END CATCH
+
+GO
+
+
+

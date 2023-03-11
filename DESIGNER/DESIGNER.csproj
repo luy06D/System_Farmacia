@@ -56,6 +56,18 @@
     <Compile Include="Encriptar\Encriptado.Designer.cs">
       <DependentUpon>Encriptado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmClientes.Designer.cs">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmEmpresas.Designer.cs">
+      <DependentUpon>FrmEmpresas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmInventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +102,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Encriptar\Encriptado.resx">
       <DependentUpon>Encriptado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmClientes.resx">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmEmpresas.resx">
+      <DependentUpon>FrmEmpresas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmInventario.resx">
       <DependentUpon>FrmInventario.cs</DependentUpon>
@@ -140,12 +158,20 @@
       <Name>ENTITIES</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\oculto.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ojo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Captura-de-pantalla-2021-03-22-a-las-13.37.42.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\farmacia.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

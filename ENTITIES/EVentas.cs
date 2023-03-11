@@ -8,18 +8,20 @@ namespace ENTITIES
 {
     public class EVentas
     {
-        public int idproducto { get; }
+        public int idventa { get; }
 
-        public string nombreProducto { get; set; }
+        public Eclientes ocliente { get; set; }
 
-        public string descripcion { get; set; }
+        public Eusuarios ousuario { get; set; }
 
-        public string precio { get; set; }
+        public Eempresa oempresa { get; set; }
 
         public string cantidad {get; set;}
 
-        public string fechaVencimiento { get; set;}
+        public string tipoComprobante { get; set;}
 
-        public string recetaMedica { get; set;}
+        public List<Edetalle_venta> odetalle_venta { get; set; }
+
+ 
     }
 }

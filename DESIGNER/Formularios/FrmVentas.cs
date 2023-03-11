@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
 namespace DESIGNER.Formularios
 {
     public partial class FrmVentas : Form
@@ -24,7 +25,14 @@ namespace DESIGNER.Formularios
 
         public FrmVentas()
         {
+
             InitializeComponent();
+        }
+
+
+        private void FrmVentas_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void txtBarcode_KeyPress(object sender, KeyPressEventArgs e)
@@ -63,7 +71,7 @@ namespace DESIGNER.Formularios
             txtDescripcion.Clear();
             txtStock.Clear();
             txtPrecio.Clear();
-            numCantidad.Value = 0;
+            numCantidad.Value = 1;
         }
 
 
@@ -77,16 +85,17 @@ namespace DESIGNER.Formularios
             if (pregunta("¿Desea agrega un nuevo producto a la lista?") == DialogResult.Yes)
             {
 
-                if (txtDescripcion.Text != "" && txtStock.Text != "" && txtPrecio.Text != "" && numCantidad.Text != "")
+                if (txtDescripcion.Text != ""  && txtPrecio.Text != "" && numCantidad.Text != "" && txtUnd.Text != "")
                 {
                     DataGridViewRow file = new DataGridViewRow();
                     file.CreateCells(gridProductos);
 
-                    file.Cells[0].Value = txtDescripcion.Text;
-                    file.Cells[1].Value = txtStock.Text;
+                    file.Cells[0].Value = txtDescripcion.Text;        
+                    file.Cells[1].Value = numCantidad.Text;
                     file.Cells[2].Value = txtPrecio.Text;
-                    file.Cells[3].Value = numCantidad.Text;
+                    file.Cells[3].Value = txtUnd.Text;
                     file.Cells[4].Value = Convert.ToDouble(txtPrecio.Text) * Convert.ToDouble(numCantidad.Text);
+                    
 
                     gridProductos.Rows.Add(file); 
                     txtDescripcion.Text = txtStock.Text = txtPrecio.Text  = "";
@@ -117,7 +126,7 @@ namespace DESIGNER.Formularios
                 }else
 
                 {
-                    MessageBox.Show("ERROR, Producto no encontrado ");
+                    MessageBox.Show("Producto no encontrado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
 
@@ -177,48 +186,108 @@ namespace DESIGNER.Formularios
             lbldatos.Text = "Nombre Empresa";
         }
 
-
-        private void FrmVentas_Load(object sender, EventArgs e)
+        private void btnregistrarP_Click(object sender, EventArgs e)
         {
-            //Instancia de un boton de columna
-            DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
-
-            //Nombre del boton de cada fila del grid
-            btnEliminar.Name = "Eliminar";
-            gridProductos.Columns.Add(btnEliminar);
-
-
-
+            FrmClientes frmClientes = new FrmClientes();
+            frmClientes.Show();
         }
 
         private void gridProductos_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            //Si tenemos columnas en el grid 
-            if (e.ColumnIndex >= 0
-                && gridProductos.Columns[e.ColumnIndex].Name == "Eliminar" // y si la columna es la columna eliminar
-                && e.RowIndex >= 0)
+            
+            if (e.ColumnIndex == 5)
             {
-                //Render (pintar ) icono dentro del boton
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All); //Utiliza todo el espacio disponible
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
 
-                //Construir icono 
-                DataGridViewButtonCell celBtn = gridProductos.Rows[e.RowIndex].Cells["Eliminar"] as DataGridViewButtonCell;
-                //Imagen (archivo ICO)
+                var ancho = Properties.Resources.delete.Width;
+                var alto = Properties.Resources.delete.Height;
+                var x = e.CellBounds.Left + (e.CellBounds.Width - ancho) / 2;
+                var y = e.CellBounds.Left + (e.CellBounds.Height - alto) / 2;
 
-                Icon icono = new Icon(Environment.CurrentDirectory + @"\delete-file256_25240.ico");
-                //Pintar el icono 
-                e.Graphics.DrawIcon(icono, e.CellBounds.Left + 2, e.CellBounds.Top + 2);
-
-                //Lo enviamos al grid 
-                gridProductos.Rows[e.RowIndex].Height = icono.Height + 2;
-                gridProductos.Columns[e.RowIndex].Width = icono.Width + 2;
-
-                //Activamos el control de eventos sobre el nuevo boton 
+                //Se procede a pintar
+                e.Graphics.DrawImage(Properties.Resources.delete, new Rectangle(x, y, ancho, alto));
                 e.Handled = true;
-            }
+            }              
+
         }
 
+        private void gridProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (gridProductos.Columns[e.ColumnIndex].Name == "btnEliminar")
+            {
+                int indice = e.RowIndex;
+
+                if(indice >= 0)
+                {
+
+                    gridProductos.Rows.RemoveAt(indice);
 
 
+                    // Reutilizamos parte del codigo del btnAgregar
+                    double sub = 0;
+                    int contador = 0;
+                    double igvs = 0.18;
+
+                    contador = gridProductos.RowCount;
+
+                    for (int i = 0; i < contador; i++)
+                    {
+                        sub += double.Parse(gridProductos.Rows[i].Cells[4].Value.ToString());
+
+                    }
+
+                    double igv = sub * igvs;
+                    double neto = sub + igv;
+
+                    txtsub.Text = sub.ToString();
+                    txtigv.Text = igv.ToString();
+                    txtneto.Text = neto.ToString();
+
+
+                }
+            }
+
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            if (gridProductos.Rows.Count < 1)
+            {
+                MessageBox.Show("Debe ingrresar productos para realizar la venta", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+            DataTable detalle_venta = new DataTable();
+
+            detalle_venta.Columns.Add("idproducto", typeof(int));
+            detalle_venta.Columns.Add("cantidad", typeof(int));
+            detalle_venta.Columns.Add("unidad", typeof(string));
+            detalle_venta.Columns.Add("precioventa", typeof(decimal));
+
+            foreach (DataGridViewRow row in gridProductos.Rows)
+            {
+                detalle_venta.Rows.Add(
+                    new object[]
+                    {
+                        Convert.ToInt16(row.Cells["idproducto"].Value.ToString()),
+                        row.Cells["cantidad"].Value.ToString(),
+                        row.Cells["unidad"].Value.ToString(),
+                        row.Cells["precioventa"].Value.ToString(),
+
+                    });
+            }
+
+            
+
+
+        }
+
+        private void btnEmpresa_Click(object sender, EventArgs e)
+        {
+            FrmEmpresas frmEmpresas = new FrmEmpresas();
+            frmEmpresas.Show();
+            
+
+        }
     }
 }

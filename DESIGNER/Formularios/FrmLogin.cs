@@ -9,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CryptSharp;
+using ENTITIES;
 
 namespace DESIGNER.Formularios
 {
     public partial class FrmLogin : Form
     {
         Usuario usuario = new Usuario();
+        Eusuarios eusuarios = new Eusuarios();
         public FrmLogin()
         {
             InitializeComponent();
@@ -23,27 +25,28 @@ namespace DESIGNER.Formularios
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             DataTable result = new DataTable();
-            string nombreUsuario = txtUsuario.Text;
-            string clave = txtContraseña.Text;
+            eusuarios.nomusuarios = txtUsuario.Text;
+            eusuarios.claveacceso = txtContraseña.Text;
 
-            result = usuario.iniciarSesion(nombreUsuario);
+            result = usuario.iniciarSesion(eusuarios);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             DataTable resultado = new DataTable();
-            string nombreUsuario = txtUsuario.Text;
-            string claveAcceso = txtContraseña.Text;
+            eusuarios.nomusuarios = txtUsuario.Text;
+            eusuarios.claveacceso = txtContraseña.Text;
 
-            resultado = usuario.iniciarSesion(nombreUsuario);
+            resultado = usuario.iniciarSesion(eusuarios);
 
             if (resultado.Rows.Count > 0)
             {
                 string claveEncriptada = resultado.Rows[0][3].ToString();
-                bool login = Crypter.CheckPassword(claveAcceso, claveEncriptada);
+                bool login = Crypter.CheckPassword(eusuarios.claveacceso, claveEncriptada);
 
                 if (login)
                 {
+                   
                     FrmVentas frmVentas = new FrmVentas();
                     frmVentas.Show();
                     this.Hide();
@@ -56,7 +59,7 @@ namespace DESIGNER.Formularios
             }
             else
             {
-                MessageBox.Show("No existe el usuario" + " " + nombreUsuario);
+                MessageBox.Show("No existe el usuario" + " " + eusuarios);
                 txtUsuario.Clear();
                 txtContraseña.Clear() ;
             }
