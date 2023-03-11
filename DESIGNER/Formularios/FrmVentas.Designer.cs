@@ -74,9 +74,9 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnregistrarP = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnEmpresa = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnEmpresa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -562,17 +562,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informacion del cliente";
             // 
-            // btnEmpresa
+            // label12
             // 
-            this.btnEmpresa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmpresa.BackgroundImage")));
-            this.btnEmpresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEmpresa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEmpresa.Location = new System.Drawing.Point(309, 82);
-            this.btnEmpresa.Name = "btnEmpresa";
-            this.btnEmpresa.Size = new System.Drawing.Size(52, 28);
-            this.btnEmpresa.TabIndex = 38;
-            this.btnEmpresa.UseVisualStyleBackColor = true;
-            this.btnEmpresa.Click += new System.EventHandler(this.btnEmpresa_Click);
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(190, 93);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(111, 17);
+            this.label12.TabIndex = 40;
+            this.label12.Text = "Nueva empresa";
             // 
             // label2
             // 
@@ -584,15 +582,17 @@
             this.label2.TabIndex = 39;
             this.label2.Text = "Nueva cliente";
             // 
-            // label12
+            // btnEmpresa
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(190, 93);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(111, 17);
-            this.label12.TabIndex = 40;
-            this.label12.Text = "Nueva empresa";
+            this.btnEmpresa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmpresa.BackgroundImage")));
+            this.btnEmpresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEmpresa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEmpresa.Location = new System.Drawing.Point(309, 82);
+            this.btnEmpresa.Name = "btnEmpresa";
+            this.btnEmpresa.Size = new System.Drawing.Size(52, 28);
+            this.btnEmpresa.TabIndex = 38;
+            this.btnEmpresa.UseVisualStyleBackColor = true;
+            this.btnEmpresa.Click += new System.EventHandler(this.btnEmpresa_Click);
             // 
             // FrmVentas
             // 
@@ -621,7 +621,6 @@
             this.Name = "FrmVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventas";
-
             ((System.ComponentModel.ISupportInitialize)(this.gridProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
             this.groupBox1.ResumeLayout(false);
