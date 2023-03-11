@@ -30,8 +30,12 @@ namespace DESIGNER.Formularios
         }
 
 
-        private void FrmVentas_Load(object sender, EventArgs e)
+        private void resetForm()
         {
+            txtdni.Clear();
+            txtdatos.Clear();
+            txtruc.Clear();
+            txtempresa.Clear();
 
         }
 
@@ -144,8 +148,18 @@ namespace DESIGNER.Formularios
                 if (txtdni.Text != "")
                 {
                     dt = ventas.buscarPersona(Convert.ToInt32(txtdni.Text));
-
-                    txtdatos.Text = dt.Rows[0][0].ToString();
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtdatos.Text = dt.Rows[0][0].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("¡Datos Incorrectos!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese Numero de DNI");
                 }
             }
         }
@@ -157,8 +171,18 @@ namespace DESIGNER.Formularios
                 if (txtruc.Text != "")
                 {
                     dt = ventas.buscarEmpresa(Convert.ToString(txtruc.Text));
-
-                    txtempresa.Text = dt.Rows[0][0].ToString();
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtempresa.Text = dt.Rows[0][0].ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("¡Datos Incorrectos!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese Numero de RUC");
                 }
             }
         }
@@ -169,9 +193,12 @@ namespace DESIGNER.Formularios
             txtdatos.Visible = true;
             txtruc.Visible = false;
             txtempresa.Visible = false;
+            txtdatos.ReadOnly = true;
+
 
             lbldni.Text = "DNI";
             lbldatos.Text = "Datos del Cliente";
+            resetForm();
         }
 
         private void rdFactura_CheckedChanged(object sender, EventArgs e)
@@ -180,10 +207,12 @@ namespace DESIGNER.Formularios
             txtdatos.Visible = false;
             txtruc.Visible = true;
             txtempresa.Visible = true;
+            txtempresa.ReadOnly = true;
 
 
             lbldni.Text = "RUC";
             lbldatos.Text = "Nombre Empresa";
+            resetForm();
         }
 
         private void btnregistrarP_Click(object sender, EventArgs e)
@@ -210,6 +239,7 @@ namespace DESIGNER.Formularios
             }              
 
         }
+
 
         private void gridProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -289,5 +319,6 @@ namespace DESIGNER.Formularios
             
 
         }
+
     }
 }
