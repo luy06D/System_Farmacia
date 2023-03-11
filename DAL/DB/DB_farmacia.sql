@@ -21,6 +21,11 @@ CREATE TABLE personas
 )
 GO
 
+--ELIMINANDO LA RESTRICCION uk_tel_per
+
+ALTER TABLE personas DROP CONSTRAINT uk_tel_per;  
+GO  
+
 INSERT INTO personas (nombres, apellidos, dni, telefono) VALUES
 		('Luis David','Cusi Gonzales','73196921','934651825'),
 		('Jesús','Camacho Carrasco','74254765','935446756'),
@@ -153,9 +158,6 @@ GO
 ALTER TABLE productos ADD barcode VARCHAR(20) NOT NULL
 GO
 
-
-SELECT * FROM productos
-GO
 INSERT INTO productos (idlaboratorio, idcategoria, nombreproducto, descripcion, cantidad,
 						precio, fechaproduccion, fechavencimiento, numlote, recetamedica,barcode) VALUES
 	(3, 1 , 'Paracetamol 500mg','Dolor leve o moderado y fiebre ', 50 , 10.00 , '02/11/2022','02/11/2025', 'G-1','N',10000000001),
