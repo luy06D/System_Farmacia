@@ -39,18 +39,6 @@ namespace BOL{
 
             }
 
-
-
-
-
-
-
-
-
-
-
-
-            
             public DataTable buscarProducto(int idproducto){
                 DataTable data = new DataTable();
                 SqlCommand command = new SqlCommand(" ", acceso.getConexion());
@@ -74,7 +62,7 @@ namespace BOL{
                 return eliminarProductos;
             }
 
-            public DataTable buscarPersona(int dni)
+            public DataTable buscarPersona(string dni)
             {
                 DataTable data = new DataTable();
                 SqlCommand command = new SqlCommand("SPU_PERSONAS_BUSCAR", acceso.getConexion());

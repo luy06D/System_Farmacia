@@ -137,6 +137,42 @@ namespace DESIGNER.Formularios
 
             }
 
+        } 
+        private void rbBoleta_CheckedChanged(object sender, EventArgs e)
+        {
+
+            txtdni.Visible = true;
+            txtdatos.Visible = true;
+            txtruc.Visible = false;
+            txtempresa.Visible = false;
+            txtdatos.Enabled = false;
+
+            txtdni.Enabled = true;
+
+
+
+            lbldni.Text = "DNI";
+            lbldatos.Text = "Datos del Cliente";
+
+
+            resetForm();
+        }
+
+        private void rdFactura_CheckedChanged(object sender, EventArgs e)
+        {
+            txtdni.Visible = false;
+            txtdatos.Visible = false;
+            txtruc.Visible = true;
+            txtempresa.Visible = true;
+            txtempresa.Enabled= false;
+
+            txtruc.Enabled = true;
+
+            lbldni.Text = "RUC";
+            lbldatos.Text = "Nombre Empresa";
+
+
+            resetForm();
         }
 
 
@@ -147,22 +183,25 @@ namespace DESIGNER.Formularios
             {
                 if (txtdni.Text != "")
                 {
-                    dt = ventas.buscarPersona(Convert.ToInt32(txtdni.Text));
+                    dt = ventas.buscarPersona(Convert.ToString(txtdni.Text));
+
                     if (dt.Rows.Count > 0)
                     {
                         txtdatos.Text = dt.Rows[0][0].ToString();
                     }
                     else
                     {
-                        MessageBox.Show("¡Datos Incorrectos!");
+                        MessageBox.Show("¡Datos Incorrectos!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Ingrese Numero de DNI");
+                    MessageBox.Show("Ingrese Numero de DNI", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
         }
+
 
         private void txtruc_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -187,33 +226,7 @@ namespace DESIGNER.Formularios
             }
         }
 
-        private void rbBoleta_CheckedChanged(object sender, EventArgs e)
-        {
-            txtdni.Visible = true;
-            txtdatos.Visible = true;
-            txtruc.Visible = false;
-            txtempresa.Visible = false;
-            txtdatos.ReadOnly = true;
-
-
-            lbldni.Text = "DNI";
-            lbldatos.Text = "Datos del Cliente";
-            resetForm();
-        }
-
-        private void rdFactura_CheckedChanged(object sender, EventArgs e)
-        {
-            txtdni.Visible = false;
-            txtdatos.Visible = false;
-            txtruc.Visible = true;
-            txtempresa.Visible = true;
-            txtempresa.ReadOnly = true;
-
-
-            lbldni.Text = "RUC";
-            lbldatos.Text = "Nombre Empresa";
-            resetForm();
-        }
+       
 
         private void btnregistrarP_Click(object sender, EventArgs e)
         {
@@ -320,5 +333,19 @@ namespace DESIGNER.Formularios
 
         }
 
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtruc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmVentas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

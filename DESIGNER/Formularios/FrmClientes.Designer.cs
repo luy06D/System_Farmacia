@@ -34,11 +34,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtapellidos = new System.Windows.Forms.TextBox();
-            this.txtdni = new System.Windows.Forms.TextBox();
-            this.txtnombres = new System.Windows.Forms.TextBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtapellidos = new System.Windows.Forms.TextBox();
+            this.txtnombres = new System.Windows.Forms.TextBox();
+            this.txtdni = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,27 +87,6 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "DNI:";
             // 
-            // txtapellidos
-            // 
-            this.txtapellidos.Location = new System.Drawing.Point(409, 73);
-            this.txtapellidos.Name = "txtapellidos";
-            this.txtapellidos.Size = new System.Drawing.Size(145, 23);
-            this.txtapellidos.TabIndex = 5;
-            // 
-            // txtdni
-            // 
-            this.txtdni.Location = new System.Drawing.Point(409, 153);
-            this.txtdni.Name = "txtdni";
-            this.txtdni.Size = new System.Drawing.Size(105, 23);
-            this.txtdni.TabIndex = 6;
-            // 
-            // txtnombres
-            // 
-            this.txtnombres.Location = new System.Drawing.Point(409, 112);
-            this.txtnombres.Name = "txtnombres";
-            this.txtnombres.Size = new System.Drawing.Size(145, 23);
-            this.txtnombres.TabIndex = 7;
-            // 
             // btnRegistrar
             // 
             this.btnRegistrar.Location = new System.Drawing.Point(441, 240);
@@ -128,17 +107,38 @@
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
+            // txtapellidos
+            // 
+            this.txtapellidos.Location = new System.Drawing.Point(460, 77);
+            this.txtapellidos.Name = "txtapellidos";
+            this.txtapellidos.Size = new System.Drawing.Size(100, 23);
+            this.txtapellidos.TabIndex = 10;
+            // 
+            // txtnombres
+            // 
+            this.txtnombres.Location = new System.Drawing.Point(460, 112);
+            this.txtnombres.Name = "txtnombres";
+            this.txtnombres.Size = new System.Drawing.Size(100, 23);
+            this.txtnombres.TabIndex = 11;
+            // 
+            // txtdni
+            // 
+            this.txtdni.Location = new System.Drawing.Point(460, 156);
+            this.txtdni.Name = "txtdni";
+            this.txtdni.Size = new System.Drawing.Size(100, 23);
+            this.txtdni.TabIndex = 12;
+            // 
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(600, 310);
+            this.Controls.Add(this.txtdni);
+            this.Controls.Add(this.txtnombres);
+            this.Controls.Add(this.txtapellidos);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRegistrar);
-            this.Controls.Add(this.txtnombres);
-            this.Controls.Add(this.txtdni);
-            this.Controls.Add(this.txtapellidos);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -164,10 +164,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtapellidos;
-        private System.Windows.Forms.TextBox txtdni;
-        private System.Windows.Forms.TextBox txtnombres;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtapellidos;
+        private System.Windows.Forms.TextBox txtnombres;
+        private System.Windows.Forms.TextBox txtdni;
     }
 }
