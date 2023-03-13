@@ -19,7 +19,7 @@ begin
 end
 go
 
-exec spu_usuarios_login 'Luy06' , 12345
+exec spu_usuarios_login 'eduin11' 
 go
 
 -- LISTAR PRODUCTOS -- ELIMINAR Y VOLVER A EJECUTAR

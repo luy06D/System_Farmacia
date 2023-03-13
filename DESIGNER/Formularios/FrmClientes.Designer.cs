@@ -100,7 +100,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(51, 77);
+            this.pictureBox1.Location = new System.Drawing.Point(51, 76);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(243, 188);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -109,7 +109,7 @@
             // 
             // txtapellidos
             // 
-            this.txtapellidos.Location = new System.Drawing.Point(460, 77);
+            this.txtapellidos.Location = new System.Drawing.Point(460, 76);
             this.txtapellidos.Name = "txtapellidos";
             this.txtapellidos.Size = new System.Drawing.Size(100, 23);
             this.txtapellidos.TabIndex = 10;
