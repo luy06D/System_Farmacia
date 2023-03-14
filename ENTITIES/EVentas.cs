@@ -10,17 +10,17 @@ namespace ENTITIES
     {
         public int idventa { get; }
 
-        public Eclientes ocliente { get; set; }
+        public Eclientes idcliente { get; set; }
 
-        public Eusuarios ousuario { get; set; }
+        public Eusuarios idusuario { get; set; }
 
-        public Eempresa oempresa { get; set; }
+        public Eempresa idempresa { get; set; }
 
         public string cantidad {get; set;}
 
         public string tipoComprobante { get; set;}
 
-        public List<Edetalle_venta> odetalle_venta { get; set; }
+       
 
  
     }

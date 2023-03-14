@@ -8,7 +8,7 @@ namespace ENTITIES
 {
     public class Eclientes
     {
-        public int idcliente { get; set; }
+        public Epersonas idcliente { get; set; }
         public string nombres { get; set; }
         public string apellidos { get; set; }
         public string direccion { get; set; }

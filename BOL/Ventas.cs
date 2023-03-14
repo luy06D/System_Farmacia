@@ -21,45 +21,26 @@ namespace BOL{
                 return acceso.getDataGrid("", 1);
             }
 
-            public void registrarVentas(EVentas eVentas , DataTable detalleVenta)
+            public void registrarVentas(EVentas eVentas, Edetalle_venta eDetalle)
             {
-                SqlCommand sqlCommand = new SqlCommand("SPU_VENTA_REGISTRAR", acceso.getConexion());
+                SqlCommand sqlCommand = new SqlCommand("SPU_REGISTRAR_VENTA", acceso.getConexion());
                 sqlCommand.CommandType = CommandType.StoredProcedure;
                 acceso.conectar();
 
-                sqlCommand.Parameters.AddWithValue("@idcliente", eVentas.ocliente);
-                sqlCommand.Parameters.AddWithValue("@idusuario", eVentas.ousuario);
-                sqlCommand.Parameters.AddWithValue("@idempresa", eVentas.oempresa);
+                sqlCommand.Parameters.AddWithValue("@idcliente", eVentas.idcliente);
+                sqlCommand.Parameters.AddWithValue("@idusuario", eVentas.idusuario);
+                sqlCommand.Parameters.AddWithValue("@idempresa", eVentas.idempresa);
                 sqlCommand.Parameters.AddWithValue("@tipocomprobante", eVentas.tipoComprobante);
-                sqlCommand.Parameters.AddWithValue("@detalleVenta", detalleVenta);
+                sqlCommand.Parameters.AddWithValue("@idventa", eDetalle.idventa);
+                sqlCommand.Parameters.AddWithValue("@idproducto", eDetalle.idproducto);
+                sqlCommand.Parameters.AddWithValue("@cantidad", eDetalle.cantidad);
+                sqlCommand.Parameters.AddWithValue("@unidad",eDetalle.unidad);
+                sqlCommand.Parameters.AddWithValue("@precioventa",eDetalle.precioVenta);
 
                 sqlCommand.ExecuteNonQuery();
                 acceso.desconectar();
 
-
-            }
-
-            public DataTable buscarProducto(int idproducto){
-                DataTable data = new DataTable();
-                SqlCommand command = new SqlCommand(" ", acceso.getConexion());
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@idproducto", idproducto);
-                acceso.conectar();
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                adapter.Fill(data);
-                acceso.desconectar();
-                return data;
-            }
-
-    
-            public int eliminarProductos(int idproducto){
-                int eliminarProductos = 1;
-                acceso.conectar();
-                SqlCommand sqlCommand = new SqlCommand(" ", acceso.getConexion());
-                sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.AddWithValue("@idproducto", idproducto);
-                acceso.desconectar();
-                return eliminarProductos;
+            
             }
 
             public DataTable buscarPersona(string dni)
@@ -96,7 +77,9 @@ namespace BOL{
                 return data;
 
             }
+            
+           
 
 
     }
-    }
+}

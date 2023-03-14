@@ -14,6 +14,7 @@ namespace BOL
 {
     public class Usuario
     {
+        public static string eusuario;
         DBAccess acceso = new DBAccess();
         public DataTable iniciarSesion(Eusuarios eusuarios)
         {
@@ -29,6 +30,8 @@ namespace BOL
 
             return dataTable;
         }
+
+        
 
     }
 }

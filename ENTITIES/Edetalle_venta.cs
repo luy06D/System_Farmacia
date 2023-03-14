@@ -10,7 +10,9 @@ namespace ENTITIES
     {
 
         public int iddetalleVenta { get; set; }
-        public Eproductos oproducto{ get; set; }
+
+        public  EVentas idventa { get; set; }
+        public Eproductos idproducto{ get; set; }
         public int cantidad { get; set; }
         public string unidad { get; set; }
         public decimal precioVenta { get; set; }

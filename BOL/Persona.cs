@@ -22,6 +22,7 @@ namespace BOL
             command.CommandType = CommandType.StoredProcedure;
             acceso.conectar();
 
+
             command.Parameters.AddWithValue("@apellidos", eclientes.apellidos);
             command.Parameters.AddWithValue("@nombres", eclientes.nombres);
             command.Parameters.AddWithValue("@dni", eclientes.dni);

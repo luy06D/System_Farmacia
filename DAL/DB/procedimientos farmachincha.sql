@@ -146,7 +146,7 @@ CREATE PROCEDURE SPU_PERSONAS_BUSCAR
 	@dni	CHAR(8)
 AS
 SELECT 
-	CONCAT(apellidos,', ',nombres)
+	CONCAT(apellidos,', ',nombres) 
 	FROM personas
 	WHERE dni = @dni
 GO
@@ -201,55 +201,32 @@ exec SPU_EMPRESA_REGISTRAR 'Real', 12345708905
 go
 
 
-CREATE TYPE [dbo].[detalle_Venta] AS TABLE(	
-	[idproducto]	INT			NOT NULL,
-	[cantidad]		SMALLINT	NOT NULL,
-	[unidad]		VARCHAR(30)	NOT NULL,
-	[precioVenta]	DECIMAL(7,2)NOT NULL
+-- procedimiento registrar ventas
+
+CREATE PROCEDURE SPU_REGISTRAR_VENTA
+(	
+	@idcliente		INT,
+	@idusuario		INT,
+	@idempresa		INT,
+	@tipocomprobante VARCHAR(20),
+	@idventa		INT,
+	@idproducto		INT,
+	@cantidad		SMALLINT, 
+	@unidad			VARCHAR(30),
+	@precioventa	DECIMAL(7,2)
+
 )
-GO
-
-
-CREATE PROCEDURE SPU_VENTA_REGISTRAR
-
-@idcliente			INT ,
-@idusuario			INT ,
-@idempresa			INT ,
-@tipocomprobante	VARCHAR(20)	,
-@detalleVenta [detalle_Venta] READONLY
 AS
-	BEGIN TRY
-
-		DECLARE @idventa  INT = 0
-	
-		-- REGISTRA TEMPORALMENTE LOS DATOS 
-		BEGIN TRANSACTION registro
-
-		INSERT INTO ventas (idcliente, idusuario, idempresa, tipocomprobante)
-					VALUES(@idcliente, @idusuario, @idempresa, @tipocomprobante)
-		
-		-- ALMACENAMOS EL ID QUE SE GENERA EN VENTAS
-		SET @idventa = SCOPE_IDENTITY()
-
-		INSERT INTO detalle_ventas (idventa, idproducto, cantidad, unidad, precioventa)
-		-- HACEMOS UNA CONSULTA AL PARAMETRO @detalleVenta
-		SELECT @idventa, idproducto, cantidad, unidad, precioVenta  FROM @detalleVenta
-
-		UPDATE PRO SET PRO.cantidad = PRO.cantidad - DV.cantidad
-		FROM productos PRO
-		INNER JOIN detalle_ventas DV ON DV.idproducto = PRO.idproducto
-
-			
-		-- SI LAS OPERACIONES TIENEN UN ERROR SE ELIMINA LOS REGISTROS TEMPORALES
-		-- SI EL REGISTRO FUE CORRECTO PROCEDE A REGISTRARSE EN LA BD
-		COMMIT TRANSACTION registro
-
-	END TRY
-	BEGIN CATCH
-		ROLLBACK TRANSACTION registro
-	END CATCH
+BEGIN
+	INSERT INTO ventas (idcliente,idusuario,idempresa,tipocomprobante)
+	VALUES(@idcliente,@idusuario,@idempresa,@tipocomprobante)
+	INSERT INTO detalle_ventas(idventa,idproducto,cantidad,unidad,precioventa)
+	VALUES(@idventa,@idproducto,@cantidad,@unidad,@precioventa)
+END 
 
 GO
 
+EXEC SPU_REGISTRAR_VENTA  6, 1, NULL,'BLETA',1, 2, 1, 'BLISTER', 1.70
 
-
+SELECT * FROM ventas
+SELECT * FROM detalle_ventas

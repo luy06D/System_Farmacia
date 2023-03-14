@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,14 +22,19 @@ namespace DESIGNER.Formularios
         Productos productos = new Productos();
         Ventas ventas = new Ventas();
         DataTable dt = new DataTable();
-
+        EVentas Eventas = new EVentas();
+        Eclientes eclientes = new Eclientes();  
+        Eempresa eempresa = new Eempresa();
+        Eusuarios  eusuarios = new Eusuarios();
+        Eproductos eproductos = new Eproductos();
+        Edetalle_venta Edetalle_Venta = new Edetalle_venta();
 
         public FrmVentas()
         {
 
             InitializeComponent();
         }
-
+        
 
         private void resetForm()
         {
@@ -75,6 +81,7 @@ namespace DESIGNER.Formularios
             txtDescripcion.Clear();
             txtStock.Clear();
             txtPrecio.Clear();
+            txtUnd.Clear();
             numCantidad.Value = 1;
         }
 
@@ -102,7 +109,7 @@ namespace DESIGNER.Formularios
                     
 
                     gridProductos.Rows.Add(file); 
-                    txtDescripcion.Text = txtStock.Text = txtPrecio.Text  = "";
+                 
  
                     double sub = 0;
                     int contador = 0;
@@ -188,6 +195,7 @@ namespace DESIGNER.Formularios
                     if (dt.Rows.Count > 0)
                     {
                         txtdatos.Text = dt.Rows[0][0].ToString();
+                       
                     }
                     else
                     {
@@ -294,34 +302,34 @@ namespace DESIGNER.Formularios
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            if (gridProductos.Rows.Count < 1)
+            if (MessageBox.Show(
+                    "¿Desea registrar la venta?",
+                    "Finalizar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                MessageBox.Show("Debe ingrresar productos para realizar la venta", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
 
-            DataTable detalle_venta = new DataTable();
+                Eventas.idcliente = eclientes;
+                Eventas.idusuario = eusuarios;
+                Eventas.idempresa = eempresa;
+                Eventas.tipoComprobante = rbBoleta.Text.Trim();
+                Edetalle_Venta.idventa = Eventas;
+                Edetalle_Venta.idproducto = eproductos;
 
-            detalle_venta.Columns.Add("idproducto", typeof(int));
-            detalle_venta.Columns.Add("cantidad", typeof(int));
-            detalle_venta.Columns.Add("unidad", typeof(string));
-            detalle_venta.Columns.Add("precioventa", typeof(decimal));
 
-            foreach (DataGridViewRow row in gridProductos.Rows)
-            {
-                detalle_venta.Rows.Add(
-                    new object[]
-                    {
-                        Convert.ToInt16(row.Cells["idproducto"].Value.ToString()),
-                        row.Cells["cantidad"].Value.ToString(),
-                        row.Cells["unidad"].Value.ToString(),
-                        row.Cells["precioventa"].Value.ToString(),
+                foreach (DataGridViewRow row in gridProductos.Rows)
+                { 
+                    Edetalle_Venta.cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
+                    Edetalle_Venta.unidad = Convert.ToString(row.Cells["unidad"].Value);
+                    Edetalle_Venta.precioVenta = Convert.ToDecimal(row.Cells["precioventa"].Value);
 
-                    });
-            }
+                }
+                   
 
-            
-
+                ventas.registrarVentas(Eventas, Edetalle_Venta);
+                             
+            }              
 
         }
 
@@ -346,6 +354,16 @@ namespace DESIGNER.Formularios
         private void FrmVentas_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
