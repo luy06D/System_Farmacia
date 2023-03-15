@@ -31,7 +31,7 @@ CREATE PROCEDURE SPU_PRODUCTOS_LISTAR
 
 AS
 BEGIN
-	SELECT 	idproducto, nombreproducto,descripcion, precio,
+	SELECT 	idlaboratorio, idcategoria, nombreproducto,descripcion, precio,
 			cantidad, fechaproduccion, fechavencimiento,
 			numlote, recetamedica
 	FROM productos

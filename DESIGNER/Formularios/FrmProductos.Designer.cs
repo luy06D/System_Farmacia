@@ -227,11 +227,19 @@
             this.btnregistrar.TabIndex = 18;
             this.btnregistrar.Text = "Registrar";
             this.btnregistrar.UseVisualStyleBackColor = true;
+<<<<<<< HEAD
+=======
+            this.btnregistrar.Click += new System.EventHandler(this.btnregistrar_Click);
+>>>>>>> 25e2f646142d3dd0c8a37e82f600bdecef752875
             // 
             // gridProductos
             // 
             this.gridProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+<<<<<<< HEAD
             this.gridProductos.Location = new System.Drawing.Point(49, 528);
+=======
+            this.gridProductos.Location = new System.Drawing.Point(49, 533);
+>>>>>>> 25e2f646142d3dd0c8a37e82f600bdecef752875
             this.gridProductos.Name = "gridProductos";
             this.gridProductos.RowHeadersWidth = 51;
             this.gridProductos.RowTemplate.Height = 24;

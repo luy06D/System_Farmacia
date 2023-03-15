@@ -20,7 +20,7 @@ namespace DAL
 
         public void conectar()
         {
-            if(this.conn.State == ConnectionState.Closed)
+            if (this.conn.State == ConnectionState.Closed)
             {
                 this.conn.Open();
             }
