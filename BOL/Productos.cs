@@ -11,8 +11,7 @@ using DAL;
 namespace BOL {
     public class Productos {
         DBAccess acceso = new DBAccess();
-
-        public void registrarProductos (
+        public void registrarProductos(
             int idlaboratorio, int idcategoria, string nombreproducto, string descripcion,
             string cantidad, string precio, string fechaproduccion, string fechavencimiento,
             string numlote, string recetamedica, string barcode) {
@@ -33,9 +32,9 @@ namespace BOL {
             command.Parameters.AddWithValue("@barcode", barcode);
             command.ExecuteNonQuery();
             acceso.desconectar();
-        }
+        } 
 
-        //Método para obtener los datos del producto mediante barcod
+
         public DataTable buscarBarCode(string barcode) {
             DataTable data = new DataTable();
             SqlCommand command = new SqlCommand("SPU_BARCODE_BUSCAR", acceso.getConexion());

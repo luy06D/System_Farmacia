@@ -9,20 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BOL;
 
-namespace DESIGNER.Formularios
-{
-    public partial class FrmProductos : Form
-    {
+namespace DESIGNER.Formularios {
+    public partial class FrmProductos : Form {
         Productos productos = new Productos();
         DataTable regprod = new DataTable();
 
-        public FrmProductos()
-        {
+        public FrmProductos(){
             InitializeComponent();
         }
 
-        private void FrmProductos_Load(object sender, EventArgs e)
-        {
+        private void FrmProductos_Load(object sender, EventArgs e){
             gridProductos.DataSource = productos.listarProductos();
             gridProductos.Refresh();
 
@@ -33,12 +29,10 @@ namespace DESIGNER.Formularios
             gridProductos.Columns[4].Width = 90;
         }
 
-        private DialogResult preguntar(string textPregunta)
-        {
+        private DialogResult preguntar(string textPregunta) {
             return MessageBox.Show(textPregunta, "Sistema - personas", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
         }
-        private void resetForm()
-        {
+        private void resetForm(){
             txtnombreproducto.Clear();
             txtdescripcion.Clear();
             txtprecio.Clear();
@@ -48,6 +42,7 @@ namespace DESIGNER.Formularios
             txtnumlote.Clear();
             txtrecetamedica.Clear();
         }
+
 
         private void btnregistrar_Click(object sender, EventArgs e)
         {
