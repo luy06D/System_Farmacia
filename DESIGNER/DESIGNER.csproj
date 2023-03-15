@@ -56,12 +56,6 @@
     <Compile Include="Encriptar\Encriptado.Designer.cs">
       <DependentUpon>Encriptado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Dashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\FrmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +92,12 @@
     <Compile Include="Formularios\FrmVentas.Designer.cs">
       <DependentUpon>FrmVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Ventana_Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ventana_Inicio.Designer.cs">
+      <DependentUpon>Ventana_Inicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,9 +108,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Encriptar\Encriptado.resx">
       <DependentUpon>Encriptado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
@@ -129,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmVentas.resx">
       <DependentUpon>FrmVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ventana_Inicio.resx">
+      <DependentUpon>Ventana_Inicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProducto.resx">
       <DependentUpon>frmProducto.cs</DependentUpon>

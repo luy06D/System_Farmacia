@@ -47,9 +47,9 @@ namespace DESIGNER.Formularios
 
                 if (login)
                 {
-                   
-                    FrmVentas frmVentas = new FrmVentas();
-                    frmVentas.Show();
+
+                    Ventana_Inicio inicio = new Ventana_Inicio();
+                    inicio.Show();
                     this.Hide();
                 }
                 else
@@ -76,6 +76,11 @@ namespace DESIGNER.Formularios
         {
             pictureBox1.BringToFront();
             txtContraseña.PasswordChar = '\0';
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

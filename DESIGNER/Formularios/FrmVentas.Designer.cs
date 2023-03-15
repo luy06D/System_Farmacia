@@ -45,6 +45,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.gridProductos = new System.Windows.Forms.DataGridView();
+            this.idproducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioventa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtneto = new System.Windows.Forms.TextBox();
             this.txtigv = new System.Windows.Forms.TextBox();
             this.txtsub = new System.Windows.Forms.TextBox();
@@ -70,12 +76,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnEmpresa = new System.Windows.Forms.Button();
-            this.idproducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioventa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -249,7 +249,7 @@
             this.unidad,
             this.total,
             this.btnEliminar});
-            this.gridProductos.Location = new System.Drawing.Point(202, 391);
+            this.gridProductos.Location = new System.Drawing.Point(146, 369);
             this.gridProductos.Margin = new System.Windows.Forms.Padding(4);
             this.gridProductos.Name = "gridProductos";
             this.gridProductos.ReadOnly = true;
@@ -259,10 +259,56 @@
             this.gridProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridProductos_CellContentClick);
             this.gridProductos.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.gridProductos_CellPainting);
             // 
+            // idproducto
+            // 
+            this.idproducto.HeaderText = "Descripcion";
+            this.idproducto.MinimumWidth = 8;
+            this.idproducto.Name = "idproducto";
+            this.idproducto.ReadOnly = true;
+            this.idproducto.Width = 467;
+            // 
+            // cantidad
+            // 
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.MinimumWidth = 8;
+            this.cantidad.Name = "cantidad";
+            this.cantidad.ReadOnly = true;
+            this.cantidad.Width = 150;
+            // 
+            // precioventa
+            // 
+            this.precioventa.HeaderText = "Precio";
+            this.precioventa.MinimumWidth = 8;
+            this.precioventa.Name = "precioventa";
+            this.precioventa.ReadOnly = true;
+            this.precioventa.Width = 200;
+            // 
+            // unidad
+            // 
+            this.unidad.HeaderText = "Unidad";
+            this.unidad.Name = "unidad";
+            this.unidad.ReadOnly = true;
+            this.unidad.Width = 150;
+            // 
+            // total
+            // 
+            this.total.HeaderText = "Total";
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Width = 150;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.HeaderText = "Eliminar";
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.ReadOnly = true;
+            this.btnEliminar.Text = "";
+            this.btnEliminar.Width = 70;
+            // 
             // txtneto
             // 
             this.txtneto.Enabled = false;
-            this.txtneto.Location = new System.Drawing.Point(1374, 755);
+            this.txtneto.Location = new System.Drawing.Point(1318, 733);
             this.txtneto.Margin = new System.Windows.Forms.Padding(4);
             this.txtneto.Name = "txtneto";
             this.txtneto.Size = new System.Drawing.Size(80, 23);
@@ -271,7 +317,7 @@
             // txtigv
             // 
             this.txtigv.Enabled = false;
-            this.txtigv.Location = new System.Drawing.Point(1374, 721);
+            this.txtigv.Location = new System.Drawing.Point(1318, 699);
             this.txtigv.Margin = new System.Windows.Forms.Padding(4);
             this.txtigv.Name = "txtigv";
             this.txtigv.Size = new System.Drawing.Size(80, 23);
@@ -280,7 +326,7 @@
             // txtsub
             // 
             this.txtsub.Enabled = false;
-            this.txtsub.Location = new System.Drawing.Point(1374, 687);
+            this.txtsub.Location = new System.Drawing.Point(1318, 665);
             this.txtsub.Margin = new System.Windows.Forms.Padding(4);
             this.txtsub.Name = "txtsub";
             this.txtsub.Size = new System.Drawing.Size(80, 23);
@@ -289,7 +335,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1326, 758);
+            this.label9.Location = new System.Drawing.Point(1270, 736);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 17);
@@ -299,7 +345,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1331, 727);
+            this.label10.Location = new System.Drawing.Point(1275, 705);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(35, 17);
@@ -309,7 +355,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1300, 690);
+            this.label11.Location = new System.Drawing.Point(1244, 668);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(66, 17);
@@ -319,7 +365,7 @@
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(210, 788);
+            this.lblUsuario.Location = new System.Drawing.Point(154, 766);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(0, 17);
@@ -328,7 +374,7 @@
             // btnFinalizar
             // 
             this.btnFinalizar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFinalizar.Location = new System.Drawing.Point(1273, 810);
+            this.btnFinalizar.Location = new System.Drawing.Point(1217, 766);
             this.btnFinalizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.Size = new System.Drawing.Size(181, 41);
@@ -340,7 +386,7 @@
             // btnCerrar
             // 
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Location = new System.Drawing.Point(1061, 810);
+            this.btnCerrar.Location = new System.Drawing.Point(996, 766);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(181, 41);
@@ -354,8 +400,8 @@
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.White;
             this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.White;
             this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.White;
-            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dateTimePicker1.Location = new System.Drawing.Point(0, 0);
+            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(0, 842);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(1547, 23);
@@ -437,7 +483,7 @@
             this.groupBox1.Controls.Add(this.txtBarcode);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(202, 213);
+            this.groupBox1.Location = new System.Drawing.Point(146, 191);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1252, 171);
             this.groupBox1.TabIndex = 2;
@@ -505,7 +551,7 @@
             this.groupBox2.Controls.Add(this.BOLETA);
             this.groupBox2.Controls.Add(this.rbBoleta);
             this.groupBox2.Controls.Add(this.rdFactura);
-            this.groupBox2.Location = new System.Drawing.Point(202, 74);
+            this.groupBox2.Location = new System.Drawing.Point(146, 52);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1252, 133);
             this.groupBox2.TabIndex = 1;
@@ -551,52 +597,6 @@
             this.btnEmpresa.UseVisualStyleBackColor = true;
             this.btnEmpresa.Click += new System.EventHandler(this.btnEmpresa_Click);
             // 
-            // idproducto
-            // 
-            this.idproducto.HeaderText = "Descripcion";
-            this.idproducto.MinimumWidth = 8;
-            this.idproducto.Name = "idproducto";
-            this.idproducto.ReadOnly = true;
-            this.idproducto.Width = 467;
-            // 
-            // cantidad
-            // 
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.MinimumWidth = 8;
-            this.cantidad.Name = "cantidad";
-            this.cantidad.ReadOnly = true;
-            this.cantidad.Width = 150;
-            // 
-            // precioventa
-            // 
-            this.precioventa.HeaderText = "Precio";
-            this.precioventa.MinimumWidth = 8;
-            this.precioventa.Name = "precioventa";
-            this.precioventa.ReadOnly = true;
-            this.precioventa.Width = 200;
-            // 
-            // unidad
-            // 
-            this.unidad.HeaderText = "Unidad";
-            this.unidad.Name = "unidad";
-            this.unidad.ReadOnly = true;
-            this.unidad.Width = 150;
-            // 
-            // total
-            // 
-            this.total.HeaderText = "Total";
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.Width = 150;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.HeaderText = "Eliminar";
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.ReadOnly = true;
-            this.btnEliminar.Text = "";
-            this.btnEliminar.Width = 70;
-            // 
             // FrmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -617,6 +617,7 @@
             this.Controls.Add(this.txtneto);
             this.Controls.Add(this.gridProductos);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmVentas";

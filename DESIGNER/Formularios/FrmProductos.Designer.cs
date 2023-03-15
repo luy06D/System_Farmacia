@@ -54,7 +54,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(276, 27);
+            this.label1.Location = new System.Drawing.Point(297, 21);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(269, 24);
@@ -144,7 +144,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(271, 119);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(116, 21);
             this.textBox1.TabIndex = 9;
@@ -152,7 +152,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(271, 183);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(116, 21);
             this.textBox2.TabIndex = 10;
@@ -160,7 +160,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(271, 252);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(116, 21);
             this.textBox3.TabIndex = 11;
@@ -168,7 +168,7 @@
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(271, 315);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(116, 21);
             this.textBox4.TabIndex = 12;
@@ -176,7 +176,7 @@
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(588, 119);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(116, 21);
             this.textBox5.TabIndex = 13;
@@ -184,7 +184,7 @@
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(588, 188);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(116, 21);
             this.textBox6.TabIndex = 14;
@@ -192,7 +192,7 @@
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(588, 254);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(116, 21);
             this.textBox7.TabIndex = 15;
@@ -200,7 +200,7 @@
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(588, 315);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(116, 21);
             this.textBox8.TabIndex = 16;
@@ -208,7 +208,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(250, 431);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 58);
             this.button1.TabIndex = 17;
@@ -218,7 +218,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(561, 431);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 58);
             this.button2.TabIndex = 18;
@@ -252,7 +252,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmProductos";
             this.Text = "Productos";
             this.TransparencyKey = System.Drawing.Color.Transparent;
