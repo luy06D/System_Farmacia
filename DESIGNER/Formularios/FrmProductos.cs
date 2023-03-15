@@ -18,6 +18,7 @@ namespace DESIGNER.Formularios {
             InitializeComponent();
         }
 
+
         private void FrmProductos_Load(object sender, EventArgs e){
             gridProductos.DataSource = productos.listarProductos();
             gridProductos.Refresh();
@@ -32,6 +33,7 @@ namespace DESIGNER.Formularios {
         private DialogResult preguntar(string textPregunta) {
             return MessageBox.Show(textPregunta, "Sistema - personas", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
         }
+
         private void resetForm(){
             txtnombreproducto.Clear();
             txtdescripcion.Clear();
@@ -44,10 +46,8 @@ namespace DESIGNER.Formularios {
         }
 
 
-        private void btnregistrar_Click(object sender, EventArgs e)
-        {
-            if (preguntar("¿Desea agregar los datos?") == DialogResult.Yes)
-            {
+        private void btnregistrar_Click(object sender, EventArgs e) {
+            if (preguntar("¿Desea agregar los datos?") == DialogResult.Yes)  {
                 string idlaboratorio = txtrecetamedica.Text;
                 string idcategoria = txtnombreproducto.Text;
                 string nombreproducto = txtnombreproducto.Text;

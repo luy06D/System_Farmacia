@@ -231,7 +231,7 @@
             // gridProductos
             // 
             this.gridProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridProductos.Location = new System.Drawing.Point(49, 533);
+            this.gridProductos.Location = new System.Drawing.Point(49, 528);
             this.gridProductos.Name = "gridProductos";
             this.gridProductos.RowHeadersWidth = 51;
             this.gridProductos.RowTemplate.Height = 24;

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using DAL;
 
+
 namespace BOL {
     public class Productos {
         DBAccess acceso = new DBAccess();
@@ -47,6 +48,7 @@ namespace BOL {
             acceso.desconectar();
             return data;
         }
+
 
         public DataTable listarProductos() {
             DataTable data = new DataTable();
