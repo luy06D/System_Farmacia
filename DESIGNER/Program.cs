@@ -16,7 +16,12 @@ namespace DESIGNER
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Formularios.FrmVentas());
+
+
+            Application.Run(new Formularios.FrmLogin());
+
+
+
         }
     }
 }

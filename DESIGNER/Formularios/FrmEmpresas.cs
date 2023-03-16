@@ -45,13 +45,10 @@ namespace DESIGNER.Formularios
                     this.Close();
 
                 }
-
-                
-                    
-            }
-            else
-            {
-                MessageBox.Show("Ingrese los datos", "ERROR!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    MessageBox.Show("Faltan Registrar Datos", "ERROR!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

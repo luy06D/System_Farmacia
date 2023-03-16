@@ -31,13 +31,15 @@ INSERT INTO personas (nombres, apellidos, dni, telefono) VALUES
 		('Jesús','Camacho Carrasco','74254765','935446756'),
 		('Rodrigo Fabrizio','Barrios Saavedra','72234657','965722315'),
 		('Alejandro Jesús','Gallardo Yañez','76534565','956766435'),
-		('Alex Edú','Quiroz Ccaulla','75673655','933098675')
+		('Alex Edú','Quiroz Ccaulla','75673655','933098675'),
+		('Alexander', 'Lopez', '74364764','965418265'),
+		('Roberto', 'Guillen', '74366764','986512340'),
+		('Eduardo', 'Garcia', '74368764','986523142'),
+		('Aldair', 'Carbajal', '77365764','965214523')
 		
 GO
 
-INSERT INTO personas (nombres, apellidos , dni) VALUES
-	('Roberto', 'Guillen', '74365765')
-GO
+
 
 
 
@@ -61,11 +63,18 @@ INSERT INTO usuarios ( idpersona ,nomusuarios, claveacceso) VALUES
 	(2,'komancho11','12345'),
 	(3,'elfabri02','12345'),
 	(4,'zocer_mono','12345'),
-	(5,'eduin11','12345')
+	(5,'eduin11','12345'),
+	( 6,'Alexander','12345'),
+	( 7,'Roberto','12345'),
+	( 8,'Eduardo','12345'),
+	(9,'Aldair','12345')
 GO
 
-update usuarios set claveacceso = '$2a$06$tVBMuKRoxunGnj6zZCIWtucDJgRNl9lpNJRL1gfByvS69K9rYJKjK' 
 
+
+SELECT * FROM usuarios
+
+update usuarios set claveacceso = '$2a$06$tVBMuKRoxunGnj6zZCIWtucDJgRNl9lpNJRL1gfByvS69K9rYJKjK' 
 go
 
 

@@ -9,7 +9,7 @@ namespace ENTITIES
     public class Eusuarios
     {
         public int idusuario { get; set; }
-        public Epersonas opersona  { get; set; }
+        public  int idpersona { get; set; }
         public string nomusuarios { get; set; }
         public string claveacceso { get; set; }
   
