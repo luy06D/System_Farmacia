@@ -13,7 +13,7 @@ namespace ENTITIES
         public string nombreproducto { get; set; }
         public string descripcion { get; set; }
         public int cantidad { get; set; }
-        public decimal precio { get; set; }
+        public string precio { get; set; }
         public string fechaproduccion { get; set; }
         public string fechavencimiento { get; set; }
         public string  numlote { get; set; }

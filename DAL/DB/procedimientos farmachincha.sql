@@ -25,11 +25,11 @@ go
 -- LISTAR PRODUCTOS -- ELIMINAR Y VOLVER A EJECUTAR
 
 
-CREATE  PROCEDURE SPU_PRODUCTOS_LISTAR
-
+CREATE PROCEDURE SPU_PRODUCTOS_LISTAR
 AS
-
-	SELECT * FROM productos
+		SELECT idlaboratorio, idcategoria, nombreproducto, descripcion, cantidad, precio, fechaproduccion,
+				fechavencimiento, numlote, recetamedica, barcode
+		FROM productos
 
 GO
 
@@ -67,6 +67,9 @@ begin
 		from productos
 		where idproducto = @idproducto
 end
+go
+
+SELECT * FROM productos
 go
 
 create procedure spu_ventas_listar(
