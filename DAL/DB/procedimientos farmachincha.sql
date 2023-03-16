@@ -25,23 +25,38 @@ go
 -- LISTAR PRODUCTOS -- ELIMINAR Y VOLVER A EJECUTAR
 
 
-
-CREATE PROCEDURE SPU_PRODUCTOS_LISTAR
-@estado	BIT
+CREATE  PROCEDURE SPU_PRODUCTOS_LISTAR
 
 AS
-BEGIN
-	SELECT 	idproducto, nombreproducto,descripcion, precio,
-			cantidad, fechaproduccion, fechavencimiento,
-			numlote, recetamedica
-	FROM productos
-	WHERE estado = @estado
 
-END 
+	SELECT * FROM productos
+
 GO
 
-EXEC SPU_PRODUCTOS_LISTAR 1
+EXEC SPU_PRODUCTOS_LISTAR 
 GO
+
+CREATE PROCEDURE  SPU_REGISTRAR_PRODUCTOS	
+	@idlaboratorio	INT,
+	@idcategoria	INT,
+	@nombreproducto	VARCHAR(50),
+	@descripcion	VARCHAR(100),
+	@precio			DECIMAL(7,2),
+	@cantidad		SMALLINT,
+	@fechaproduccion	DATE,
+	@fechavencimiento	DATE,
+	@numlote			VARCHAR(15),
+	@recetamedica	CHAR(1),
+	@barcode	VARCHAR(20)
+
+AS BEGIN
+
+	INSERT INTO productos(idlaboratorio, idcategoria,  nombreproducto, descripcion, precio, cantidad, fechaproduccion, fechavencimiento, numlote, recetamedica, barcode)
+		VALUES(@idlaboratorio, @idcategoria,  @nombreproducto, @descripcion, @precio, @cantidad,@fechaproduccion, @fechavencimiento, @numlote, @recetamedica, @barcode)
+END
+GO
+
+exec SPU_REGISTRAR_PRODUCTOS 3, 1 , 'Paracetamol 500mg','Dolor leve o moderado y fiebre ', 50 , 10.00 , '02/11/2022','02/11/2025', 'G-1','N',90000000009
 
 create procedure SPU_PRODUCTOS_BUSCAR(
 	@idproducto	int
