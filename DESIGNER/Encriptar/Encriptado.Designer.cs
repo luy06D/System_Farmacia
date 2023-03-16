@@ -136,6 +136,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Encriptado";
             this.Text = "Encriptar";
+            this.Load += new System.EventHandler(this.Encriptado_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

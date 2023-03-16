@@ -178,8 +178,7 @@ AS
 
 GO
 
-EXEC SPU_CLIENTE_REGISTRAR 'Adriana Maria','Cuenca Palma','22223240'
-GO
+
 
 
 
@@ -230,3 +229,57 @@ EXEC SPU_REGISTRAR_VENTA  6, 1, NULL,'BLETA',1, 2, 1, 'BLISTER', 1.70
 
 SELECT * FROM ventas
 SELECT * FROM detalle_ventas
+
+
+CREATE PROCEDURE	SPU_PERSONAS_REGISTRAR
+	@nombres	VARCHAR(40),
+	@apellidos	VARCHAR(40),
+	@dni		CHAR(8),
+	@telefono	CHAR(9)
+
+AS
+	INSERT INTO personas (nombres, apellidos, dni, telefono) VALUES
+				(@nombres, @apellidos, @dni, @telefono)
+
+GO
+
+
+Create PROCEDURE SPU_PERSONAS_LISTAR
+as
+select top(1) idpersona, nombres , apellidos , dni, telefono
+from personas
+order by idpersona desc
+
+
+go
+
+
+
+
+CREATE  PROCEDURE SPU_USUARIO_REGISTRAR
+	@idpersona INT,
+	@nomusuarios VARCHAR(30),
+	@claveacceso  VARCHAR(100)
+AS
+	INSERT INTO usuarios(idpersona, nomusuarios, claveacceso) values
+	(@idpersona, @nomusuarios, @claveacceso)
+	go
+
+
+
+
+	
+	
+
+
+
+
+
+	
+
+create procedure SPU_USUARIOS_LISTAR
+as
+select * from usuarios
+go
+
+

@@ -38,5 +38,10 @@ namespace DESIGNER.Encriptar
                 MessageBox.Show("Acceso denegado");
             }
         }
+
+        private void Encriptado_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

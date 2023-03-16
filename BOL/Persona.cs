@@ -33,6 +33,32 @@ namespace BOL
 
         }
 
-     
+        public void registrarPersonas(Epersonas epersonas)
+        {
+            SqlCommand command = new SqlCommand("SPU_PERSONAS_REGISTRAR", acceso.getConexion());
+            command.CommandType = CommandType.StoredProcedure;
+            acceso.conectar();
+
+            
+            command.Parameters.AddWithValue("@apellidos", epersonas.apellidos);
+            command.Parameters.AddWithValue("@nombres", epersonas.nombres);
+            command.Parameters.AddWithValue("@dni", epersonas.dni);
+            command.Parameters.AddWithValue("@telefono", epersonas.telefono);
+
+            command.ExecuteNonQuery();
+            acceso.desconectar();
+        }
+
+        public DataTable listarPersonas()
+        {
+            DataTable data = new DataTable();
+            acceso.conectar();
+            SqlDataAdapter adapter = new SqlDataAdapter("SPU_PERSONAS_LISTAR", acceso.getConexion());
+            adapter.Fill(data);
+            acceso.desconectar();
+            return data;
+
+        }
+
     }
 }

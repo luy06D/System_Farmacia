@@ -15,6 +15,7 @@ namespace BOL
     public class Usuario
     {
         public static string eusuario;
+        
         DBAccess acceso = new DBAccess();
         public DataTable iniciarSesion(Eusuarios eusuarios)
         {
@@ -31,7 +32,24 @@ namespace BOL
             return dataTable;
         }
 
-        
+        public void registrarUsuario(int idpersona, string nomusuarios, string claveacceso)
+        {
+            SqlCommand command = new SqlCommand("SPU_USUARIO_REGISTRAR", acceso.getConexion());
+            command.CommandType = CommandType.StoredProcedure;
+            acceso.conectar();
+
+
+            command.Parameters.AddWithValue("@idpersona", idpersona);
+            command.Parameters.AddWithValue("@nomusuarios", nomusuarios);
+            command.Parameters.AddWithValue("@claveacceso", claveacceso);
+
+
+            command.ExecuteNonQuery();
+            acceso.desconectar();
+
+
+
+        }
 
     }
 }

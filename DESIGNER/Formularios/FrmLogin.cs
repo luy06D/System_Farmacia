@@ -16,6 +16,7 @@ namespace DESIGNER.Formularios
 {
     public partial class FrmLogin : Form
     {
+        
         Usuario usuario = new Usuario();
         Eusuarios eusuarios = new Eusuarios();
         public FrmLogin()
@@ -26,8 +27,8 @@ namespace DESIGNER.Formularios
         private void FrmLogin_Load(object sender, EventArgs e)
         {
             DataTable result = new DataTable();
-            eusuarios.nomusuarios = txtUsuario.Text;
-            eusuarios.claveacceso = txtContraseña.Text;
+             eusuarios.nomusuarios = txtUsuario.Text;
+                eusuarios.claveacceso = txtContraseña.Text;
 
             result = usuario.iniciarSesion(eusuarios);
         }
@@ -35,8 +36,8 @@ namespace DESIGNER.Formularios
         private void button1_Click(object sender, EventArgs e)
         {
             DataTable resultado = new DataTable();
-            eusuarios.nomusuarios = txtUsuario.Text;
-            eusuarios.claveacceso = txtContraseña.Text;
+             eusuarios.nomusuarios = txtUsuario.Text;
+             eusuarios.claveacceso = (txtContraseña.Text);
 
             resultado = usuario.iniciarSesion(eusuarios);
 
@@ -60,7 +61,7 @@ namespace DESIGNER.Formularios
             }
             else
             {
-                MessageBox.Show("No existe el usuario" + " " + eusuarios);
+                MessageBox.Show("No existe el usuario" + " "  );
                 txtUsuario.Clear();
                 txtContraseña.Clear() ;
             }
@@ -81,6 +82,13 @@ namespace DESIGNER.Formularios
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmRPersonas personas = new FrmRPersonas();
+            personas.Show();
+            this.Hide();
         }
     }
 }
