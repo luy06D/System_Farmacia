@@ -21,13 +21,16 @@ namespace DESIGNER.Formularios
 
         Productos productos = new Productos();
         Ventas ventas = new Ventas();
+
+
         DataTable dt = new DataTable();
-        EVentas Eventas = new EVentas();
+        EVentas eventas = new EVentas();
         Eclientes eclientes = new Eclientes();  
         Eempresa eempresa = new Eempresa();
         Eusuarios  eusuarios = new Eusuarios();
-        Eproductos eproductos = new Eproductos();
-        Edetalle_venta Edetalle_Venta = new Edetalle_venta();
+        Edetalle_venta edetalle = new Edetalle_venta();
+
+        int idproducto = -1;
 
         public FrmVentas()
         {
@@ -38,9 +41,9 @@ namespace DESIGNER.Formularios
 
         private void resetForm()
         {
-            txtdni.Clear();
+            //txtdni.Clear();
             txtdatos.Clear();
-            txtruc.Clear();
+           // txtruc.Clear();
             txtempresa.Clear();
 
         }
@@ -55,9 +58,13 @@ namespace DESIGNER.Formularios
 
                     if (dt.Rows.Count > 0)
                     {
-                        txtDescripcion.Text = dt.Rows[0][0].ToString();
-                        txtStock.Text = dt.Rows[0][1].ToString();
-                        txtPrecio.Text = dt.Rows[0][2].ToString();
+                        idproducto = Convert.ToInt32(dt.Rows[0][0].ToString());
+                        txtDescripcion.Text = dt.Rows[0][1].ToString();
+                        txtStock.Text = dt.Rows[0][2].ToString();
+                        txtPrecio.Text = dt.Rows[0][3].ToString();
+
+                        numCantidad.Maximum = Convert.ToDecimal(txtStock.Text);
+                        btnAgregar.Focus();
                     }
                     else
                     {
@@ -93,72 +100,128 @@ namespace DESIGNER.Formularios
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (pregunta("¿Desea agrega un nuevo producto a la lista?") == DialogResult.Yes)
+            //Verificamos que hemos encontrado el producto
+            if (idproducto != -1)
             {
 
-                if (txtDescripcion.Text != ""  && txtPrecio.Text != "" && numCantidad.Text != "" && txtUnd.Text != "")
+                if (!existeDuplicado(idproducto))
                 {
-                    DataGridViewRow file = new DataGridViewRow();
-                    file.CreateCells(gridProductos);
+                    decimal importe = Convert.ToDecimal(txtPrecio.Text) * numCantidad.Value;
 
-                    file.Cells[0].Value = txtDescripcion.Text;        
-                    file.Cells[1].Value = numCantidad.Text;
-                    file.Cells[2].Value = txtPrecio.Text;
-                    file.Cells[3].Value = txtUnd.Text;
-                    file.Cells[4].Value = Convert.ToDouble(txtPrecio.Text) * Convert.ToDouble(numCantidad.Text);
+                    gridProductos.Rows.Add( numCantidad.Value.ToString(), idproducto.ToString(), txtDescripcion.Text, txtPrecio.Text, importe.ToString(), txtUnd.Text);
+
+                    montoPago();
+                    idproducto = -1;
+
+                    resetCamposProducto();
+                    txtBarcode.Focus();                   
                     
-
-                    gridProductos.Rows.Add(file); 
-                 
- 
-                    double sub = 0;
-                    int contador = 0;
-                    double igvs = 0.18;
-
-
-
-                    contador = gridProductos.RowCount;
-
-                    for (int i = 0; i < contador; i++)
-                    {
-                        sub += double.Parse(gridProductos.Rows[i].Cells[4].Value.ToString());
-                   
-                    }
-
-                    double igv = sub * igvs;
-                    double neto = sub + igv;
-
-                    txtsub.Text = sub.ToString();
-                    txtigv.Text = igv.ToString();
-                    txtneto.Text = neto.ToString();
-
-                    
-                    
-                }else
-
-                {
-                    MessageBox.Show("Producto no encontrado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
-
 
             }
+            else
+            {
+                MessageBox.Show("Producto no encontrado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-        } 
+        }
+
+        private bool existeDuplicado(int idtmp)
+        {
+            int i = 0;
+            int cantidadSolicitada = 0;
+            decimal nuevoImporte = 0;
+            bool encontrado = false;
+
+            //Recorremos todo el datagridview, buscando en la segunda columna si el "idproducto" ya existe
+            if (gridProductos.Rows.Count > 0)
+            {
+                while (i < gridProductos.Rows.Count && !encontrado)
+                {
+                    //Si lo encontramos verificamos si podemos la cantidad comprada no supera el stock
+                    if (Convert.ToInt32(gridProductos.Rows[i].Cells[1].Value) == idtmp)
+                    {
+                        //Se calcula el total solicitado sumando la cantidad del grid + cantidad ingresada en la caja de texto
+                        cantidadSolicitada = Convert.ToInt32(gridProductos.Rows[i].Cells[0].Value) + Convert.ToInt32(numCantidad.Value);
+
+                        if (cantidadSolicitada > Convert.ToInt32(txtStock.Text))
+                        {
+                            MessageBox.Show(
+                                "No podemos atender su pedido porque sobrepasa el stock",
+                                "Infotec ventas",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
+                            numCantidad.Focus();
+                        }
+                        else
+                        {
+                            //Si la cantidad que se va a agregar + la cantidad que ya se solicitó, NO sobrepasa el stock, se procede a la actualización
+                            gridProductos.Rows[i].Cells[0].Value = cantidadSolicitada;
+
+                            //Calculando nuevo importe
+                            nuevoImporte = Convert.ToDecimal(txtPrecio.Text) * cantidadSolicitada;
+                            gridProductos.Rows[i].Cells[4].Value = nuevoImporte;
+
+                            resetCamposProducto();
+                            txtBarcode.Focus();
+                        }
+
+                        encontrado = true;
+                    }
+
+                    i++;
+                }
+            }
+
+            return encontrado;
+        }
+
+        private void resetCamposProducto()
+        {
+            txtBarcode.Clear();
+            txtDescripcion.Clear();
+            txtStock.Clear();
+            txtPrecio.Clear();
+            txtUnd.Clear();
+            numCantidad.Value = 1;
+        }
+
+
+        //Metodo para calcular el sub , igv y total
+        private void montoPago()
+        {
+            double neto = 0, igv = 0, subtotal = 0;
+
+            if (gridProductos.Rows.Count > 0)
+            {
+                for (int i = 0; i < gridProductos.Rows.Count; i++)
+                {
+                    neto += Convert.ToDouble(gridProductos.Rows[i].Cells[4].Value);
+                }
+
+                subtotal = neto / 1.18;
+                igv = neto - subtotal;
+            }
+
+            txtsub.Text = subtotal.ToString("0.00");
+            txtigv.Text = igv.ToString("0.00");
+            txtneto.Text = neto.ToString("0.00");
+
+            
+        }
+
+
+
         private void rbBoleta_CheckedChanged(object sender, EventArgs e)
         {
 
-            txtdni.Visible = true;
+            btnBuscar.Enabled = true;
+            eventas.tipoComprobante = 'B';
+            btnBuscarEmpresa.Enabled = false;
             txtdatos.Visible = true;
-            txtruc.Visible = false;
             txtempresa.Visible = false;
             txtdatos.Enabled = false;
-
-            txtdni.Enabled = true;
-
-
-
-            lbldni.Text = "DNI";
             lbldatos.Text = "Datos del Cliente";
 
 
@@ -167,15 +230,16 @@ namespace DESIGNER.Formularios
 
         private void rdFactura_CheckedChanged(object sender, EventArgs e)
         {
-            txtdni.Visible = false;
+
+            eventas.tipoComprobante = 'F';
+         
             txtdatos.Visible = false;
-            txtruc.Visible = true;
             txtempresa.Visible = true;
             txtempresa.Enabled= false;
+            btnBuscarEmpresa.Enabled = true;
+            btnBuscar.Enabled = false;
 
-            txtruc.Enabled = true;
-
-            lbldni.Text = "RUC";
+          
             lbldatos.Text = "Nombre Empresa";
 
 
@@ -184,58 +248,7 @@ namespace DESIGNER.Formularios
 
 
 
-        private void txtdni_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                if (txtdni.Text != "")
-                {
-                    dt = ventas.buscarPersona(Convert.ToString(txtdni.Text));
-
-                    if (dt.Rows.Count > 0)
-                    {
-                        txtdatos.Text = dt.Rows[0][0].ToString();
-                       
-                    }
-                    else
-                    {
-                        MessageBox.Show("¡Datos Incorrectos!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Ingrese Numero de DNI", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
-        }
-
-
-        private void txtruc_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                if (txtruc.Text != "")
-                {
-                    dt = ventas.buscarEmpresa(Convert.ToString(txtruc.Text));
-                    if (dt.Rows.Count > 0)
-                    {
-                        txtempresa.Text = dt.Rows[0][0].ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("¡Datos Incorrectos!");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Ingrese Numero de RUC");
-                }
-            }
-        }
-
-       
-
+     
         private void btnregistrarP_Click(object sender, EventArgs e)
         {
             FrmClientes frmClientes = new FrmClientes();
@@ -272,29 +285,9 @@ namespace DESIGNER.Formularios
                 {
 
                     gridProductos.Rows.RemoveAt(indice);
-
-
-                    // Reutilizamos parte del codigo del btnAgregar
-                    double sub = 0;
-                    int contador = 0;
-                    double igvs = 0.18;
-
-                    contador = gridProductos.RowCount;
-
-                    for (int i = 0; i < contador; i++)
-                    {
-                        sub += double.Parse(gridProductos.Rows[i].Cells[4].Value.ToString());
-
-                    }
-
-                    double igv = sub * igvs;
-                    double neto = sub + igv;
-
-                    txtsub.Text = sub.ToString();
-                    txtigv.Text = igv.ToString();
-                    txtneto.Text = neto.ToString();
-
-
+                  
+                    montoPago();
+                  
                 }
             }
 
@@ -302,36 +295,74 @@ namespace DESIGNER.Formularios
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(
-                    "¿Desea registrar la venta?",
-                    "Finalizar",
+            //Si el numero de filas es igual a cero
+            if(gridProductos.Rows.Count == 0)
+            {
+                MessageBox.Show("No ha indicado productos","FARMACHINCHA ventas", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                txtBarcode.Focus();
+            }
+            else
+            {
+                if (MessageBox.Show(
+                    "¿Desea finalizar esta venta?",
+                    "FARMACHINCHA Ventas",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes)
-            {
+                {
+                    int idVentaObtenido = ventas.registrarVentas(eventas);
 
-
-                Eventas.idcliente = eclientes;
-                Eventas.idusuario = eusuarios;
-                Eventas.idempresa = eempresa;
-                Eventas.tipoComprobante = rbBoleta.Text.Trim();
-                Edetalle_Venta.idventa = Eventas;
-                Edetalle_Venta.idproducto = eproductos;
-
-
-                foreach (DataGridViewRow row in gridProductos.Rows)
-                { 
-                    Edetalle_Venta.cantidad = Convert.ToInt32(row.Cells["cantidad"].Value);
-                    Edetalle_Venta.unidad = Convert.ToString(row.Cells["unidad"].Value);
-                    Edetalle_Venta.precioVenta = Convert.ToDecimal(row.Cells["precioventa"].Value);
-
+                    if(idVentaObtenido == -1)
+                    {
+                       MessageBox.Show("Existen errores, consulte al administrador del sistema","FARMACHINCHA Ventas",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        //Enviamos todos los datos del datagridview
+                        enviarProductos(idVentaObtenido);
+                    }
                 }
-                   
-
-                ventas.registrarVentas(Eventas, Edetalle_Venta);
-                             
-            }              
+            }
+        
 
         }
+
+        private void enviarProductos(int idventa)
+        {
+            for(int i = 0; i < gridProductos.Rows.Count; i++)
+            {
+                edetalle.idventa = idventa;
+                edetalle.idproducto = Convert.ToInt32(gridProductos.Rows[i].Cells[1].Value);
+                edetalle.cantidad = Convert.ToInt32(gridProductos.Rows[i].Cells[0].Value);
+                edetalle.unidad = Convert.ToString(gridProductos.Rows[i].Cells[5].Value);
+                edetalle.precioVenta = Convert.ToDecimal(gridProductos.Rows[i].Cells[3].Value);
+
+                ventas.registrarDetalleV(edetalle);
+
+            }
+
+            //Reseteamos todo el frmVentas
+            rbBoleta.Checked = true;
+            txtdatos.Clear();
+
+            
+            resetCamposProducto();
+            gridProductos.Rows.Clear();
+
+            eventas.tipoComprobante = 'B';
+            eventas.tipoComprobante = 'F';
+            eventas.idcliente = -1;
+            eventas.idusuario = -1;
+            eventas.idempresa = -1;
+
+            txtsub.Clear();
+            txtigv.Clear();
+            txtneto.Clear();
+
+            MessageBox.Show("Se registró una venta y su detalle correctamente","FARMACHINCHA Ventas",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+        }
+
+
 
         private void btnEmpresa_Click(object sender, EventArgs e)
         {
@@ -341,29 +372,72 @@ namespace DESIGNER.Formularios
 
         }
 
-        private void txtBarcode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtruc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FrmVentas_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            frmBuscarCliente buscarCliente = new frmBuscarCliente();
+            buscarCliente.ShowDialog();
+
+            if(buscarCliente.idcliente != -1)
+            {
+                eventas.idcliente = buscarCliente.idcliente;
+                txtdatos.Text = buscarCliente.datosCliente;
+
+            }
+        }
+
+        private void btnBuscarProductos_Click(object sender, EventArgs e)
+        {
+            frmBuscarProducto buscarProducto = new frmBuscarProducto(); 
+            buscarProducto.ShowDialog();
+
+            if(buscarProducto.idproducto != -1)
+            {
+                int stock = buscarProducto.stock;
+                decimal precio = buscarProducto.precio;
+
+
+                idproducto = buscarProducto.idproducto;
+                txtDescripcion.Text = buscarProducto.datosProducto;
+                txtStock.Text = stock.ToString();
+                txtPrecio.Text = precio.ToString();
+                
+
+            }
+        }
+
+        private void FrmVentas_Load(object sender, EventArgs e)
+        {
+            gridProductos.Columns[0].Width = 90;            
+            gridProductos.Columns[2].Width = 740;
+            gridProductos.Columns[3].Width = 100;
+            gridProductos.Columns[4].Width = 98;
+            gridProductos.Columns[5].Width = 90;
+
+        }
+
+        private void btnBuscarEmpresa_Click(object sender, EventArgs e)
+        {
+            frmbuscarEmpresa buscarEmpresa = new frmbuscarEmpresa();
+            buscarEmpresa.ShowDialog();
+
+            if (buscarEmpresa.idempresa != -1)
+            {
+                eventas.idempresa = buscarEmpresa.idempresa;
+                txtempresa.Text = buscarEmpresa.datosEmpresa;
+
+            }
+
+        }
+
+        private void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

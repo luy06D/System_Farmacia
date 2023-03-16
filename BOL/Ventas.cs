@@ -9,8 +9,10 @@ using System.Data.SqlClient;
 using ENTITIES;
 using System.Web;
 using System.Net.Http.Headers;
+using System.Diagnostics;
 
-namespace BOL{
+namespace BOL
+{
     public class Ventas
     {
        
@@ -21,27 +23,88 @@ namespace BOL{
                 return acceso.getDataGrid("", 1);
             }
 
-            public void registrarVentas(EVentas eVentas, Edetalle_venta eDetalle)
+            public int registrarVentas(EVentas eventas)
             {
-                SqlCommand sqlCommand = new SqlCommand("SPU_REGISTRAR_VENTA", acceso.getConexion());
-                sqlCommand.CommandType = CommandType.StoredProcedure;
+                SqlCommand command = new SqlCommand("SPU_REGISTRAR_VENTA", acceso.getConexion());
+                int idobtenido;
+
                 acceso.conectar();
 
-                sqlCommand.Parameters.AddWithValue("@idcliente", eVentas.idcliente);
-                sqlCommand.Parameters.AddWithValue("@idusuario", eVentas.idusuario);
-                sqlCommand.Parameters.AddWithValue("@idempresa", eVentas.idempresa);
-                sqlCommand.Parameters.AddWithValue("@tipocomprobante", eVentas.tipoComprobante);
-                sqlCommand.Parameters.AddWithValue("@idventa", eDetalle.idventa);
-                sqlCommand.Parameters.AddWithValue("@idproducto", eDetalle.idproducto);
-                sqlCommand.Parameters.AddWithValue("@cantidad", eDetalle.cantidad);
-                sqlCommand.Parameters.AddWithValue("@unidad",eDetalle.unidad);
-                sqlCommand.Parameters.AddWithValue("@precioventa",eDetalle.precioVenta);
+                try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
-                sqlCommand.ExecuteNonQuery();
-                acceso.desconectar();
+                    //Construimos en parametro OUTPUT
+                    SqlParameter idventa = new SqlParameter();
+                    idventa.ParameterName = "@idventa";
+                    idventa.DbType = DbType.Int32;
+                    idventa.Direction = ParameterDirection.Output;
 
-            
+                    //Pasamos el parametro de salida
+                    command.Parameters.Add(idventa);
+
+                    //Pasamos el parametro de entrada
+                    command.Parameters.AddWithValue("@idcliente", eventas.idcliente);
+                  //  command.Parameters.AddWithValue("@idusuario", eventas.idusuario);
+                  //  command.Parameters.AddWithValue("@idempresa", eventas.idempresa);
+                    command.Parameters.AddWithValue("@tipocomprobante", eventas.tipoComprobante);
+
+                    command.ExecuteNonQuery();
+
+                    //Retornamos el id generado convirtiendolo a entero
+                    idobtenido = Convert.ToInt32(idventa.Value);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                    idobtenido= -1 ;
+                }
+                finally
+                {
+                    acceso.desconectar();
+                }
+          
+                return idobtenido;
+
             }
+
+        public bool registrarDetalleV(Edetalle_venta edetalle)
+        {
+
+            bool guardadoCorrectamente = false;
+            SqlCommand command = new SqlCommand("SPU_REGISTRAR_DETVENTA", acceso.getConexion());
+            acceso.conectar();
+
+            try
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@idventa", edetalle.idventa);
+                command.Parameters.AddWithValue("@idproducto", edetalle.idproducto);
+                command.Parameters.AddWithValue("@cantidad", edetalle.cantidad);
+                command.Parameters.AddWithValue("@unidad", edetalle.cantidad);
+                command.Parameters.AddWithValue("@precioventa", edetalle.precioVenta);
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    guardadoCorrectamente = true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                guardadoCorrectamente = false;
+            }
+            finally
+            {
+                acceso.desconectar();
+            }
+
+            return guardadoCorrectamente;
+
+
+
+        }
+
 
             public DataTable buscarPersona(string dni)
             {

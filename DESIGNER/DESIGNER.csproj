@@ -56,6 +56,24 @@
     <Compile Include="Encriptar\Encriptado.Designer.cs">
       <DependentUpon>Encriptado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarCliente.Designer.cs">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmbuscarEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmbuscarEmpresa.Designer.cs">
+      <DependentUpon>frmbuscarEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBuscarProducto.Designer.cs">
+      <DependentUpon>frmBuscarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,16 +116,19 @@
     <Compile Include="Formularios\Ventana_Inicio.Designer.cs">
       <DependentUpon>Ventana_Inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProducto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmProducto.Designer.cs">
-      <DependentUpon>frmProducto.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Encriptar\Encriptado.resx">
       <DependentUpon>Encriptado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBuscarCliente.resx">
+      <DependentUpon>frmBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmbuscarEmpresa.resx">
+      <DependentUpon>frmbuscarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBuscarProducto.resx">
+      <DependentUpon>frmBuscarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
@@ -129,9 +150,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Ventana_Inicio.resx">
       <DependentUpon>Ventana_Inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmProducto.resx">
-      <DependentUpon>frmProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

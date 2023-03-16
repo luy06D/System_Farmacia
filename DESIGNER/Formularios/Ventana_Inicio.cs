@@ -47,5 +47,10 @@ namespace DESIGNER.Formularios
             //Cierra la ventana
             Application.Exit();
         }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

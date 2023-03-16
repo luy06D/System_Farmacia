@@ -33,6 +33,19 @@ namespace BOL
 
         }
 
-     
+        public DataTable getdataPersona()
+        {
+            DataTable data = new DataTable();
+            acceso.conectar();
+
+            SqlCommand command = new SqlCommand("SPU_PERSONAS_BUSCAR", acceso.getConexion());
+            command.CommandType = CommandType.StoredProcedure;
+            data.Load(command.ExecuteReader());
+
+            acceso.desconectar();                   
+            return data;
+        }
+
+
     }
 }

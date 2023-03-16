@@ -10,15 +10,15 @@ namespace ENTITIES
     {
         public int idventa { get; }
 
-        public Eclientes idcliente { get; set; }
+        public int  idcliente { get; set; }
 
-        public Eusuarios idusuario { get; set; }
+        public int idusuario { get; set; }
 
-        public Eempresa idempresa { get; set; }
+        public int idempresa { get; set; }
 
         public string cantidad {get; set;}
 
-        public string tipoComprobante { get; set;}
+        public char tipoComprobante { get; set;}
 
        
 

@@ -58,5 +58,18 @@ namespace BOL
 
         }
 
+        public DataTable getdataProducto()
+        {
+            DataTable data = new DataTable();
+            acceso.conectar();
+
+            SqlCommand command = new SqlCommand("SPU_PRODUCTOS_LISTARVENTA", acceso.getConexion());
+            command.CommandType = CommandType.StoredProcedure;
+            data.Load(command.ExecuteReader());
+
+            acceso.desconectar();
+            return data;
+        }
+
     }
 }

@@ -130,41 +130,55 @@ GO
 CREATE PROCEDURE SPU_BARCODE_BUSCAR
 		@barcode VARCHAR(20)
 AS
-SELECT 
-	CONCAT(nombreproducto,'/ ', descripcion)as Producto ,
-	cantidad , precio 
-	
-
-	FROM productos
-	WHERE barcode = @barcode
+SELECT	idproducto,
+		CONCAT(nombreproducto,'/ ', descripcion)as Producto ,
+		cantidad , precio 
+		FROM productos
+		WHERE barcode = @barcode
 GO
 
 exec SPU_BARCODE_BUSCAR '10000000001'
 go
 
+-- BUSCAR CLIENTE
 CREATE PROCEDURE SPU_PERSONAS_BUSCAR
-	@dni	CHAR(8)
-AS
-SELECT 
-	CONCAT(apellidos,', ',nombres) 
-	FROM personas
-	WHERE dni = @dni
+AS BEGIN
+	SELECT idpersona,nombres, apellidos, dni, telefono
+		FROM personas
+		ORDER BY apellidos, nombres	
+END
 GO
 
-EXEC SPU_PERSONAS_BUSCAR '73196921'
+EXEC SPU_PERSONAS_BUSCAR 
 GO
 
+
+-- BUSCAR PRODUCTOS PARA LA VENTA
+CREATE PROCEDURE SPU_PRODUCTOS_LISTARVENTA
+AS BEGIN 
+		SELECT	idproducto,
+				CONCAT(nombreproducto, ' ' ,descripcion) 'descripcion',
+				cantidad, precio, recetamedica
+		FROM productos
+		WHERE cantidad > 0 
+END
+GO
+
+EXEC SPU_PRODUCTOS_LISTARVENTA
+GO
+
+
+-- BUSCAR UNA EMPRESA EN FRMVENTAS
 CREATE PROCEDURE SPU_EMPRESAS_BUSCAR
-	@ruc	CHAR(11)
-AS
-	SELECT nombre
+AS BEGIN
+
+	SELECT idempresa, nombre , ruc
 	FROM empresas
-	WHERE ruc = @ruc
+END
 GO
 
-EXEC SPU_EMPRESAS_BUSCAR '20693023598'
+EXEC SPU_EMPRESAS_BUSCAR 
 GO
-
 
 -- REGISTRAR CLIENTE
 CREATE PROCEDURE SPU_CLIENTE_REGISTRAR
@@ -204,29 +218,35 @@ go
 -- procedimiento registrar ventas
 
 CREATE PROCEDURE SPU_REGISTRAR_VENTA
-(	
-	@idcliente		INT,
-	@idusuario		INT,
-	@idempresa		INT,
-	@tipocomprobante VARCHAR(20),
-	@idventa		INT,
-	@idproducto		INT,
-	@cantidad		SMALLINT, 
-	@unidad			VARCHAR(30),
-	@precioventa	DECIMAL(7,2)
 
-)
-AS
-BEGIN
-	INSERT INTO ventas (idcliente,idusuario,idempresa,tipocomprobante)
-	VALUES(@idcliente,@idusuario,@idempresa,@tipocomprobante)
-	INSERT INTO detalle_ventas(idventa,idproducto,cantidad,unidad,precioventa)
-	VALUES(@idventa,@idproducto,@cantidad,@unidad,@precioventa)
-END 
+@idventa			INT OUTPUT, -- VARIABLE DE SALIDA
+@idcliente			INT,
+@tipocomprobante	VARCHAR(20)
+AS BEGIN 
+		IF @idcliente = -1 SET @idcliente = NULL
+	
 
+		INSERT INTO ventas (idcliente, tipocomprobante)
+			VALUES(@idcliente,  @tipocomprobante)
+
+		-- Obtenemos el ultimo ID generado
+		SET @idventa = @@IDENTITY
+END
 GO
 
-EXEC SPU_REGISTRAR_VENTA  6, 1, NULL,'BLETA',1, 2, 1, 'BLISTER', 1.70
+-- Procedimiento para registrar el detalle de venta
+CREATE PROCEDURE SPU_REGISTRAR_DETVENTA
+	@idventa		INT,
+	@idproducto		INT,
+	@cantidad		SMALLINT,
+	@unidad			VARCHAR(30),
+	@precioventa	DECIMAL(7,2)
+AS BEGIN 
+	INSERT INTO detalle_ventas (idventa, idproducto, cantidad, unidad, precioventa)
+		VALUES(@idventa, @idproducto, @cantidad, @unidad, @precioventa)
 
-SELECT * FROM ventas
-SELECT * FROM detalle_ventas
+		UPDATE productos SET cantidad = cantidad - @cantidad WHERE idproducto = @idproducto
+END
+GO
+
+

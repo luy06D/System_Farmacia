@@ -54,6 +54,8 @@ CREATE TABLE usuarios
 GO
 
 
+
+
 INSERT INTO usuarios ( idpersona ,nomusuarios, claveacceso) VALUES
 	(1,'Luy06','12345'),
 	(2,'komancho11','12345'),
@@ -218,6 +220,8 @@ GO
 
 
 
+
+
 -- CREANDO LA ENTIDAD EMPRESAS
 CREATE TABLE empresas
 (
@@ -251,6 +255,9 @@ CREATE TABLE ventas
 )
 GO
 
+-- Modificamos al campo idusuario
+ALTER TABLE ventas ALTER COLUMN idusuario INT NULL
+GO
 
 INSERT INTO ventas (idcliente, idusuario, tipocomprobante) VALUES
 	(6, 1, 'BOLETA')
@@ -279,6 +286,13 @@ INSERT INTO detalle_ventas(idventa, idproducto, cantidad, unidad, precioventa) V
 	(1, 1, 2 , 'BLISTER', 10.00 ),
 	(1, 2, 1, 'BLISTER', 1.70)
 GO
+
+select * from ventas 
+go
+
+select * from detalle_ventas
+go
+
 
 
 CREATE TABLE pagos
