@@ -18,7 +18,7 @@ namespace DESIGNER
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            Application.Run(new Formularios.FrmLogin());
+            Application.Run(new Formularios.FrmProducto());
 
 
 

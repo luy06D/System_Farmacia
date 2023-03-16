@@ -50,7 +50,7 @@ namespace DESIGNER.Formularios
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-
+            AbrirFormulario(new FrmProducto());
         }
     }
 }

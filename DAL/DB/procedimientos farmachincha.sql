@@ -25,38 +25,23 @@ go
 -- LISTAR PRODUCTOS -- ELIMINAR Y VOLVER A EJECUTAR
 
 
+
 CREATE PROCEDURE SPU_PRODUCTOS_LISTAR
+@estado	BIT
+
 AS
-		SELECT idlaboratorio, idcategoria, nombreproducto, descripcion, cantidad, precio, fechaproduccion,
-				fechavencimiento, numlote, recetamedica, barcode
-		FROM productos
+BEGIN
+	SELECT 	idproducto, nombreproducto,descripcion, precio,
+			cantidad, fechaproduccion, fechavencimiento,
+			numlote, recetamedica
+	FROM productos
+	WHERE estado = @estado
 
+END 
 GO
 
-EXEC SPU_PRODUCTOS_LISTAR 
+EXEC SPU_PRODUCTOS_LISTAR 1
 GO
-
-CREATE PROCEDURE  SPU_REGISTRAR_PRODUCTOS	
-	@idlaboratorio	INT,
-	@idcategoria	INT,
-	@nombreproducto	VARCHAR(50),
-	@descripcion	VARCHAR(100),
-	@precio			DECIMAL(7,2),
-	@cantidad		SMALLINT,
-	@fechaproduccion	DATE,
-	@fechavencimiento	DATE,
-	@numlote			VARCHAR(15),
-	@recetamedica	CHAR(1),
-	@barcode	VARCHAR(20)
-
-AS BEGIN
-
-	INSERT INTO productos(idlaboratorio, idcategoria,  nombreproducto, descripcion, precio, cantidad, fechaproduccion, fechavencimiento, numlote, recetamedica, barcode)
-		VALUES(@idlaboratorio, @idcategoria,  @nombreproducto, @descripcion, @precio, @cantidad,@fechaproduccion, @fechavencimiento, @numlote, @recetamedica, @barcode)
-END
-GO
-
-exec SPU_REGISTRAR_PRODUCTOS 3, 1 , 'Paracetamol 500mg','Dolor leve o moderado y fiebre ', 50 , 10.00 , '02/11/2022','02/11/2025', 'G-1','N',90000000009
 
 create procedure SPU_PRODUCTOS_BUSCAR(
 	@idproducto	int
@@ -67,9 +52,6 @@ begin
 		from productos
 		where idproducto = @idproducto
 end
-go
-
-SELECT * FROM productos
 go
 
 create procedure spu_ventas_listar(
@@ -210,7 +192,8 @@ AS
 
 GO
 
-
+EXEC SPU_CLIENTE_REGISTRAR 'Adriana Maria','Cuenca Palma','22223240'
+GO
 
 
 
@@ -266,13 +249,7 @@ AS BEGIN
 END
 GO
 
-
-<<<<<<< HEAD
-=======
-SELECT * FROM ventas
-SELECT * FROM detalle_ventas
-
-
+-- Registrar persona para usuario
 CREATE PROCEDURE	SPU_PERSONAS_REGISTRAR
 	@nombres	VARCHAR(40),
 	@apellidos	VARCHAR(40),
@@ -286,17 +263,17 @@ AS
 GO
 
 
+-- listar ultima persona registrada para usuario
 Create PROCEDURE SPU_PERSONAS_LISTAR
 as
 select top(1) idpersona, nombres , apellidos , dni, telefono
 from personas
 order by idpersona desc
 
-
 go
 
 
-
+-- registrar una persona como usuario
 
 CREATE  PROCEDURE SPU_USUARIO_REGISTRAR
 	@idpersona INT,
@@ -305,24 +282,36 @@ CREATE  PROCEDURE SPU_USUARIO_REGISTRAR
 AS
 	INSERT INTO usuarios(idpersona, nomusuarios, claveacceso) values
 	(@idpersona, @nomusuarios, @claveacceso)
-	go
+GO
 
 
+-- REGISTRA LOS PRODUCTOS 
+CREATE PROCEDURE  SPU_REGISTRAR_PRODUCTOS    
+    @idlaboratorio   	INT,
+    @idcategoria   		INT,
+    @nombreproducto   	VARCHAR(50),
+    @descripcion   		VARCHAR(100),
+    @precio           	DECIMAL(7,2),
+    @cantidad       	SMALLINT,
+    @fechaproduccion   	DATE,
+    @fechavencimiento   DATE,
+    @numlote            VARCHAR(15),
+    @recetamedica   	CHAR(1),
+    @barcode    VARCHAR(20)
 
+AS BEGIN    	
 
-	
-	
+			INSERT INTO productos(idlaboratorio, idcategoria,  nombreproducto, descripcion, precio, cantidad, fechaproduccion, fechavencimiento, numlote, recetamedica, barcode)
+       				VALUES(@idlaboratorio, @idcategoria,  @nombreproducto, @descripcion, @precio, @cantidad,@fechaproduccion, @fechavencimiento, @numlote, @recetamedica, @barcode)
+END
+GO
 
+-- LISTA LOS PRODUCTOS REGISTRADOS
 
-
-
-
-	
-
-create procedure SPU_USUARIOS_LISTAR
-as
-select * from usuarios
-go
-
-
->>>>>>> da80f304ae896325e1c38a73cf40031d32f12cf1
+CREATE PROCEDURE SPU_LISTAR_PRODUCTO
+AS
+        SELECT	idlaboratorio, idcategoria, nombreproducto, descripcion, 
+				cantidad, precio, fechaproduccion,
+                fechavencimiento, numlote, recetamedica, barcode
+        FROM productos
+GO

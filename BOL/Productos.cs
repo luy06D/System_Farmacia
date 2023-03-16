@@ -21,7 +21,7 @@ namespace BOL
         {
             DataTable resultado = new DataTable();
             acceso.conectar();
-            SqlDataAdapter adapter = new SqlDataAdapter("SPU_PRODUCTOS_LISTAR", acceso.getConexion());
+            SqlDataAdapter adapter = new SqlDataAdapter("SPU_LISTAR_PRODUCTO", acceso.getConexion());
             adapter.Fill(resultado);
             acceso.desconectar();
             return resultado;

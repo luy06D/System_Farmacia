@@ -29,6 +29,12 @@ namespace DESIGNER.Formularios
             gridproductos.DataSource = productos.ListarProductos();
             gridproductos.Refresh();
 
+            gridproductos.Columns[0].Width = 50;
+            gridproductos.Columns[1].Width = 50;
+            gridproductos.Columns[2].Width = 400;
+            gridproductos.Columns[4].Width = 50;
+            gridproductos.Columns[5].Width = 50;
+
         }
         private void resetForm()
         {
